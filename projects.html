@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Projects by Cristian López Solá, showcasing work in web development.">
+        <meta name="keywords" content="Projects, Web Development, Angular, JavaScript">
+        <meta name="author" content="Cristian López Solá">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://yourwebsite.com/projects">
+        <meta property="og:title" content="Projects - Cristian López Solá">
+        <meta property="og:description"
+            content="Explore the projects of Cristian López Solá, showcasing work in web development.">
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+        <title>Projects - Cristian López Solá</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cv.html">Resume</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h1>My Projects</h1>
+            <p>Here are some of the projects I have worked on.</p>
+        </main>
+
+        <script>
+            const hamburger = document.querySelector('.hamburger');
+            const navUl = document.querySelector('nav ul');
+
+            hamburger.addEventListener('click', () => {
+                navUl.classList.toggle('active');
+            });
+        </script>
+
+    </body>
+
+</html>
