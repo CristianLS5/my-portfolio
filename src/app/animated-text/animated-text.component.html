@@ -1,0 +1,11 @@
+<div [@slideIn]="visibleWords().length" class="overflow-hidden">
+    @for (word of visibleWords(); track word; let i = $index) {
+    <div class="text-3xl font-bold mb-4 transform transition-all duration-1000 ease-out" [ngClass]="{
+           'translate-x-[-100%] opacity-0': i % 2 === 0,
+           'translate-x-[100%] opacity-0': i % 2 !== 0,
+           'translate-x-0 opacity-100': true
+         }">
+        {{ word }}
+    </div>
+    }
+</div>
