@@ -11,7 +11,12 @@ import { TypewriterComponent } from '../typewriter/typewriter.component';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  technologies = ['Java', 'JavaScript', 'TypeScript', 'Angular'];
+  technologies = [
+    'Software Developer',
+    'Front-end Developer',
+    'Angular Enthusiastic',
+    'Ironman',
+  ];
   faLinkedin = faLinkedin;
   faGithub = faGithub;
   faEnvelope = faEnvelope;

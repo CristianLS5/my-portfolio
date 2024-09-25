@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
 
 @Component({
@@ -8,5 +8,5 @@ import { NgxTypedWriterModule } from 'ngx-typed-writer';
   templateUrl: './typewriter.component.html',
 })
 export class TypewriterComponent {
-  @Input() strings: string[] = [];
+  strings = input<string[]>([]);
 }
