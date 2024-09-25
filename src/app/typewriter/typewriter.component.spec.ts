@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnimatedTextComponent } from './animated-text.component';
+import { TypewriterComponent } from './typewriter.component';
 
-describe('AnimatedTextComponent', () => {
-  let component: AnimatedTextComponent;
-  let fixture: ComponentFixture<AnimatedTextComponent>;
+describe('TypewriterComponent', () => {
+  let component: TypewriterComponent;
+  let fixture: ComponentFixture<TypewriterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AnimatedTextComponent]
+      imports: [TypewriterComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AnimatedTextComponent);
+    fixture = TestBed.createComponent(TypewriterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

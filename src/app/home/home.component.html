@@ -1,8 +1,25 @@
-<div class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-4 text-gray-900 dark:text-white">Welcome to My Portfolio</h1>
-    <p class="text-xl mb-8 text-gray-700 dark:text-gray-300">This is the homepage of Cristian López Solá, a passionate
-        Frontend Developer.</p>
-
-    <app-animated-text [words]="animatedWords" />
-    <!-- Add more content here as needed -->
+<div class="container mx-auto px-4 py-8 bg-gray-900 text-white min-h-screen">
+    <h1 class="text-4xl font-bold mb-4">Hello, I'm Cristian López.</h1>
+    <p class="text-xl mb-8">Welcome to my portfolio</p>
+    <p class="text-lg">
+        I'm a
+        <span class="text-blue-500">
+            <app-typewriter [strings]="technologies"></app-typewriter>
+        </span>
+    </p>
+    <p class="text-lg mt-2">
+        I'm a self-taught and motivated front-end developer based in Spain.
+    </p>
+    <div class="mt-8 flex space-x-4">
+        <a href="#" class="text-blue-400 hover:text-blue-300"><fa-icon [icon]="faLinkedin" size="2x"></fa-icon></a>
+        <a href="#" class="text-gray-400 hover:text-gray-300"><fa-icon [icon]="faGithub" size="2x"></fa-icon></a>
+        <a href="#" class="text-red-400 hover:text-red-300"><fa-icon [icon]="faEnvelope" size="2x"></fa-icon></a>
+        <a href="#" class="text-gray-400 hover:text-gray-300"><fa-icon [icon]="faUserFriends" size="2x"></fa-icon></a>
+    </div>
+    <div class="mt-8">
+        <button class="bg-white text-gray-900 px-4 py-2 rounded mr-4 hover:bg-gray-200 transition duration-300">View
+            Work →</button>
+        <button
+            class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition duration-300">Contact</button>
+    </div>
 </div>

@@ -1,14 +1,19 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AnimatedTextComponent } from '../animated-text/animated-text.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import { TypewriterComponent } from '../typewriter/typewriter.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, AnimatedTextComponent],
+  imports: [TypewriterComponent, FontAwesomeModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  animatedWords = ['Software', 'Frontend', 'Angular'];
+  technologies = ['Java', 'JavaScript', 'TypeScript', 'Angular'];
+  faLinkedin = faLinkedin;
+  faGithub = faGithub;
+  faEnvelope = faEnvelope;
+  faUserFriends = faUserFriends;
 }
