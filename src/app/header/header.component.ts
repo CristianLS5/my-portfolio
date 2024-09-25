@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, signal } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  signal,
+  HostListener,
+  ElementRef,
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -10,22 +18,18 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  isDarkMode = signal(false);
+  @Input() isDarkMode!: boolean;
+  @Output() toggleDarkMode = new EventEmitter<void>();
+  showHeaderContent = signal(false);
 
-  constructor() {
-    // Check if dark mode was previously set
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode) {
-      this.isDarkMode.set(savedMode === 'true');
+  constructor(private el: ElementRef) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const introSection = document.querySelector('.intro-section');
+    if (introSection) {
+      const introRect = introSection.getBoundingClientRect();
+      this.showHeaderContent.set(introRect.bottom <= 0);
     }
-
-    effect(() => {
-      document.body.classList.toggle('dark', this.isDarkMode());
-      localStorage.setItem('darkMode', this.isDarkMode().toString());
-    });
-  }
-
-  toggleDarkMode() {
-    this.isDarkMode.update((isDark) => !isDark);
   }
 }
