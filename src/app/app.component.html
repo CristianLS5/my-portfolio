@@ -3,6 +3,11 @@
        'bg-gray-900 text-white border-gray-800': isDarkMode
      }">
   <app-header [isDarkMode]="isDarkMode" (toggleDarkMode)="toggleDarkMode()"></app-header>
-  <app-intro [isDarkMode]="isDarkMode"></app-intro>
-  <router-outlet></router-outlet>
+
+  <app-intro [isDarkMode]="isDarkMode" class="mb-8"></app-intro>
+
+  <main class="container mx-auto px-4">
+    <router-outlet></router-outlet>
+    <app-projects class="mt-8"></app-projects>
+  </main>
 </div>

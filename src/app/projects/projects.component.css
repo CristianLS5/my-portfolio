@@ -1,0 +1,31 @@
+.projects {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.projects__item {
+  @apply w-full;
+}
+
+.project {
+  @apply relative h-64 bg-cover bg-center rounded-lg overflow-hidden;
+}
+
+.project__content {
+  @apply absolute inset-0 bg-black bg-opacity-50 text-white p-4 flex flex-col justify-end;
+}
+
+.project__title {
+  @apply text-xl font-bold mb-2;
+}
+
+.project__description {
+  @apply text-sm mb-2;
+}
+
+.project__tags {
+  @apply flex flex-wrap;
+}
+
+.project__tag {
+  @apply bg-blue-500 text-xs px-2 py-1 rounded mr-2 mb-2;
+}
