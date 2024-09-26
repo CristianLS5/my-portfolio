@@ -1,4 +1,4 @@
-import { Component, signal, effect } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
@@ -12,19 +12,14 @@ import { IntroComponent } from './intro/intro.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  isDarkMode = signal(false);
-
-  constructor() {
-    effect(() => {
-      if (this.isDarkMode()) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    });
-  }
+  isDarkMode = false;
 
   toggleDarkMode() {
-    this.isDarkMode.update((isDark) => !isDark);
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }
 }

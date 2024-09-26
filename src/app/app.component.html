@@ -1,7 +1,8 @@
-<div class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-  <app-header [isDarkMode]="isDarkMode()" (toggleDarkMode)="toggleDarkMode()"></app-header>
-  <app-intro></app-intro>
-  <main class="container mx-auto px-4 py-8">
-    <router-outlet></router-outlet>
-  </main>
+<div class="min-h-screen" [ngClass]="{
+       'bg-white text-gray-900 border-white': !isDarkMode, 
+       'bg-gray-900 text-white border-gray-800': isDarkMode
+     }">
+  <app-header [isDarkMode]="isDarkMode" (toggleDarkMode)="toggleDarkMode()"></app-header>
+  <app-intro [isDarkMode]="isDarkMode"></app-intro>
+  <router-outlet></router-outlet>
 </div>
