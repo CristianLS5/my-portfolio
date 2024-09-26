@@ -6,7 +6,11 @@ module.exports = {
   ],
   darkMode: "class", // This enables dark mode
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        12: "12deg",
+      },
+    },
   },
   plugins: [],
 };

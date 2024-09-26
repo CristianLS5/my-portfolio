@@ -9,12 +9,13 @@ import { TypewriterComponent } from '../typewriter/typewriter.component';
   standalone: true,
   imports: [TypewriterComponent, FontAwesomeModule],
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
   technologies = [
-    'Software Developer',
-    'Front-end Developer',
-    'Angular Enthusiastic',
+    'a Software Developer',
+    'a Front-end Developer',
+    'an Angular Enthusiastic',
     'Ironman',
   ];
   faLinkedin = faLinkedin;

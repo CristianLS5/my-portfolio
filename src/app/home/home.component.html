@@ -1,37 +1,57 @@
-<div class="container mx-auto px-4 py-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
-    <h1 class="text-4xl font-bold mb-4">Hello, I'm Cristian</h1>
-    <p class="text-xl mb-8">Welcome to my portfolio</p>
-    <p class="text-lg">
-        I'm a
-        <span class="text-blue-600 dark:text-blue-400">
-            <app-typewriter [strings]="technologies"></app-typewriter>
-        </span>
-    </p>
-    <p class="text-lg mt-2">
-        I'm a passionate front-end developer specialized in Angular, crafting clean and efficient user interfaces.
-    </p>
-    <div class="mt-8 flex space-x-4">
-        <a href="#" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
-            <fa-icon [icon]="faLinkedin" size="2x"></fa-icon>
-        </a>
-        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
-            <fa-icon [icon]="faGithub" size="2x"></fa-icon>
-        </a>
-        <a href="#" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300">
-            <fa-icon [icon]="faEnvelope" size="2x"></fa-icon>
-        </a>
-        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
-            <fa-icon [icon]="faUserFriends" size="2x"></fa-icon>
-        </a>
-    </div>
-    <div class="mt-8">
-        <button
-            class="bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300">
-            View Work →
-        </button>
-        <button
-            class="bg-gray-200 text-gray-900 px-4 py-2 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition duration-300">
-            Contact
-        </button>
+<div class="home">
+    <div class="container mx-auto px-4 py-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen">
+        <div class="home-content">
+            <div class="home-content__led-border"></div>
+            <div class="home-content__inner flex flex-col md:flex-row items-center max-w-4xl w-full mx-auto">
+                <div class="md:w-1/2 md:pr-8">
+                    <h1 class="text-4xl font-bold mb-4">Hello, I'm Cristian</h1>
+                    <p class="text-xl mb-8">Welcome to my portfolio</p>
+                    <p class="text-lg">
+                        I'm
+                        <span class="text-blue-600 dark:text-blue-400">
+                            <app-typewriter [strings]="technologies"></app-typewriter>
+                        </span>
+                    </p>
+                    <p class="text-lg mt-2">
+                        I'm a passionate front-end developer specialized in Angular, crafting clean and efficient user
+                        interfaces.
+                    </p>
+                    <div class="mt-8 flex space-x-4">
+                        <a href="#"
+                            class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
+                            <fa-icon [icon]="faLinkedin" size="2x"></fa-icon>
+                        </a>
+                        <a href="#"
+                            class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
+                            <fa-icon [icon]="faGithub" size="2x"></fa-icon>
+                        </a>
+                        <a href="#" class="text-red-600 dark:text-red-400 hover:text-red-800 dark:hover:text-red-300">
+                            <fa-icon [icon]="faEnvelope" size="2x"></fa-icon>
+                        </a>
+                        <a href="#"
+                            class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
+                            <fa-icon [icon]="faUserFriends" size="2x"></fa-icon>
+                        </a>
+                    </div>
+                    <div class="mt-8">
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300">
+                            View Work →
+                        </button>
+                        <button
+                            class="bg-gray-200 text-gray-900 px-4 py-2 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition duration-300">
+                            Contact
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0">
+                    <div class="photo">
+                        <div class="photo__container">
+                            <img class="photo__image" src="./assets/images/photo-home.jpg" alt="Cristian's photo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
