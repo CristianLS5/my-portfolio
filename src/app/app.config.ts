@@ -5,11 +5,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { routes } from './app.routes';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimations(),
+    provideHttpClient(),
     importProvidersFrom(FontAwesomeModule, NgxTypedWriterModule),
   ],
 };
