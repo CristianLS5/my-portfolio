@@ -15,7 +15,7 @@ import { NgOptimizedImage } from '@angular/common';
 export class HomeComponent {
   technologies = [
     'a Software Developer',
-    'a Front-end Developer',
+    'a Front-end Specialist',
     'an Angular Enthusiastic',
     'Ironman',
   ];

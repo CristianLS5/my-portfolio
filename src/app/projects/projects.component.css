@@ -27,5 +27,32 @@
 }
 
 .project__tag {
-  @apply bg-blue-500 text-xs px-2 py-1 rounded mr-2 mb-2;
+  @apply text-xs px-2 py-1 rounded mr-2 mb-2 font-semibold;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px currentColor;
+  border: 1px solid currentColor;
+}
+
+.project__tag[data-tag="Angular"] {
+  @apply bg-red-900 text-red-200;
+}
+
+.project__tag[data-tag="TypeScript"] {
+  @apply bg-blue-900 text-blue-200;
+}
+
+.project__tag[data-tag="RxJS"] {
+  @apply bg-pink-900 text-pink-200;
+}
+
+.project__tag[data-tag="React"] {
+  @apply bg-cyan-900 text-cyan-200;
+}
+
+.project__tag[data-tag="JavaScript"] {
+  @apply bg-yellow-900 text-yellow-200;
+}
+
+.project__tag[data-tag="Redux"] {
+  @apply bg-purple-900 text-purple-200;
 }

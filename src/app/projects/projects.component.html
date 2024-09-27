@@ -9,7 +9,7 @@
                     <p class="project__description">{{ project.description }}</p>
                     <div class="project__tags">
                         @for (tag of project.tags; track tag) {
-                        <span class="project__tag">{{ tag }}</span>
+                        <span class="project__tag" [attr.data-tag]="tag">{{ tag }}</span>
                         }
                     </div>
                 </div>
