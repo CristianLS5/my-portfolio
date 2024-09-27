@@ -16,8 +16,9 @@
             <li><a routerLink="/projects" routerLinkActive="text-blue-500"
                     class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Projects</a>
             </li>
-            <li><a routerLink="/articles" routerLinkActive="text-blue-500"
-                    class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Articles</a>
+            <li>
+                <a routerLink="/news" routerLinkActive="text-blue-500"
+                    class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">News</a>
             </li>
             <li><a routerLink="/contact" routerLinkActive="text-blue-500"
                     class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Contact</a>
@@ -26,7 +27,7 @@
                     class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Resume</a>
             </li>
         </ul>
-        <button (click)="toggleDarkMode.emit()"
+        <button (click)="darkModeService.toggleDarkMode()"
             class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">
             @if (isDarkMode) {
             <!-- Sun icon for dark mode -->

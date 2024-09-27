@@ -6,7 +6,11 @@ import {
   ViewChild,
   signal,
   Input,
+  OnInit,
+  OnDestroy,
 } from '@angular/core';
+import { DarkModeService } from '../services/dark-mode.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mario',
@@ -32,7 +36,7 @@ import {
     `,
   ],
 })
-export class MarioComponent implements AfterViewInit {
+export class MarioComponent implements AfterViewInit, OnInit, OnDestroy {
   @Input() isDarkMode: boolean = false;
   @ViewChild('gameContainer') gameContainer!: ElementRef;
   @ViewChild('mario') mario!: ElementRef;
@@ -46,8 +50,28 @@ export class MarioComponent implements AfterViewInit {
   private marioY: number = 0;
   private jumping: boolean = false;
 
+  private darkModeSubscription: Subscription | undefined;
+
+  constructor(private darkModeService: DarkModeService) {}
+
+  ngOnInit() {
+    this.darkModeSubscription = this.darkModeService.darkMode$.subscribe(
+      (isDark) => {
+        this.isDarkMode = isDark;
+        // You might need to trigger change detection or update game elements here
+      }
+    );
+  }
+
   ngAfterViewInit() {
     this.initGame();
+  }
+
+  ngOnDestroy() {
+    if (this.darkModeSubscription) {
+      this.darkModeSubscription.unsubscribe();
+    }
+    cancelAnimationFrame(this.animationFrame);
   }
 
   private initGame() {
@@ -156,9 +180,5 @@ export class MarioComponent implements AfterViewInit {
     }
 
     this.animationFrame = requestAnimationFrame(() => this.gameLoop());
-  }
-
-  ngOnDestroy() {
-    cancelAnimationFrame(this.animationFrame);
   }
 }

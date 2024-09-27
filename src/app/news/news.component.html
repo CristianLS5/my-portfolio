@@ -1,0 +1,20 @@
+<div class="news-page container mx-auto py-8 px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
+    style="padding-top: 6rem;">
+    <h1 class="text-4xl font-bold mb-8">All Angular News</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (article of articles; track article.id) {
+        <article class="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="text-lg font-semibold mb-2">{{ article.title }}</h3>
+            <p class="text-gray-600 mb-4">{{ article.description }}</p>
+            <a [href]="article.url" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Read more</a>
+            <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full uppercase mt-2" [ngClass]="{
+                    'bg-blue-100 text-blue-800': article.source === 'twitter',
+                    'bg-gray-100 text-gray-800': article.source === 'github',
+                    'bg-red-100 text-red-800': article.source === 'angular-blog'
+                  }">
+                {{ article.source }}
+            </span>
+        </article>
+        }
+    </div>
+</div>

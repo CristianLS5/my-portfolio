@@ -2,14 +2,6 @@
        'bg-white text-gray-900 border-white': !isDarkMode, 
        'bg-gray-900 text-white border-gray-800': isDarkMode
      }">
-  <app-header [isDarkMode]="isDarkMode" (toggleDarkMode)="toggleDarkMode()"></app-header>
-
-  <app-intro [isDarkMode]="isDarkMode" class="mb-8"></app-intro>
-
-  <main class="container mx-auto px-4">
-    <router-outlet></router-outlet>
-    <app-skills [isDarkMode]="isDarkMode"></app-skills>
-    <app-projects></app-projects>
-    <app-articles [limit]="3" [showMoreButton]="true"></app-articles>
-  </main>
+  <app-header (toggleDarkMode)="toggleDarkMode()"></app-header>
+  <router-outlet></router-outlet>
 </div>
