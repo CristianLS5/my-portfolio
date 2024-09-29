@@ -1,8 +1,9 @@
 export interface Article {
   id: string;
   title: string;
-  description: string;
-  url: string;
-  source: 'twitter' | 'github' | 'angular-blog';
+  releaseType: string;
   publishedAt: Date;
+  commitSummary: string;
+  isBreakingChange: boolean;
+  url: string;
 }

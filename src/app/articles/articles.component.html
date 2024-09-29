@@ -15,15 +15,14 @@
         @for (article of displayedArticles(); track article.id) {
         <article class="border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
             <h3 class="text-lg font-semibold mb-2">{{ article.title }}</h3>
-            <p class="text-gray-600 mb-4">{{ article.description }}</p>
-            <a [href]="article.url" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">Read more</a>
-            <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full uppercase mt-2" [ngClass]="{
-                    'bg-blue-100 text-blue-800': article.source === 'twitter',
-                    'bg-gray-100 text-gray-800': article.source === 'github',
-                    'bg-red-100 text-red-800': article.source === 'angular-blog'
-                  }">
-                {{ article.source }}
-            </span>
+            <p class="text-sm text-gray-500 mb-2">Type: {{ article.releaseType }}</p>
+            <p class="text-sm text-gray-500 mb-2">Released: {{ article.publishedAt | date:'medium' }}</p>
+            <p class="text-gray-600 mb-4">{{ article.commitSummary }}</p>
+            @if (article.isBreakingChange) {
+            <p class="text-red-600 font-semibold mb-2">Breaking Change</p>
+            }
+            <a [href]="article.url" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium">View on
+                GitHub</a>
         </article>
         }
     </div>

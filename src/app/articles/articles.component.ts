@@ -29,7 +29,7 @@ export class ArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.articleService
-      .getArticles()
+      .getArticles(this.limit)
       .subscribe((articles) => this.articles.set(articles));
   }
 
