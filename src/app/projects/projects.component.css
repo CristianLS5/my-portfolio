@@ -7,27 +7,70 @@
 }
 
 .project {
-  @apply relative h-64 bg-cover bg-center rounded-lg overflow-hidden;
+  @apply relative h-64 bg-cover bg-center rounded-lg overflow-hidden transition-all duration-300 ease-in-out;
+  position: relative;
+  transform: scale(1);
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.group:hover .project {
+  transform: scale(0.98);
+}
+
+.group:hover .project::before {
+  opacity: 1;
+  box-shadow: 0 0 20px 10px currentColor, inset 0 0 20px 5px currentColor;
+}
+
+.project[data-first-tag="Angular"]::before {
+  color: rgba(221, 0, 49, 0.7);
+}
+
+.project[data-first-tag="React"]::before {
+  color: rgba(97, 218, 251, 0.7);
+}
+
+.project[data-first-tag="TypeScript"]::before {
+  color: rgba(49, 120, 198, 0.7);
+}
+
+.project[data-first-tag="JavaScript"]::before {
+  color: rgba(247, 223, 30, 0.7);
 }
 
 .project__content {
-  @apply absolute inset-0 bg-black bg-opacity-50 text-white p-4 flex flex-col justify-end;
+  @apply absolute inset-0 bg-black bg-opacity-70 text-white p-4 flex flex-col justify-end transition-all duration-300;
+  z-index: 2;
 }
 
-.project__title {
-  @apply text-xl font-bold mb-2;
+.group:hover .project__content {
+  @apply bg-opacity-50;
 }
 
-.project__description {
-  @apply text-sm mb-2;
+.project__title,
+.project__description,
+.project__tag {
+  transition: color 0.3s ease-in-out;
 }
 
-.project__tags {
-  @apply flex flex-wrap;
+.group:hover .project__title,
+.group:hover .project__description,
+.group:hover .project__tag {
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 .project__tag {
-  @apply text-xs px-2 py-1 rounded mr-2 mb-2 font-semibold;
   text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
   box-shadow: 0 0 5px currentColor;
   border: 1px solid currentColor;
