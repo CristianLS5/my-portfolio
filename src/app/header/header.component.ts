@@ -8,7 +8,12 @@ import {
   HostListener,
   ElementRef,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterModule,
+} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLaptopCode, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
@@ -33,7 +38,8 @@ export class HeaderComponent {
 
   constructor(
     private el: ElementRef,
-    public darkModeService: DarkModeService
+    public darkModeService: DarkModeService,
+    private router: Router
   ) {}
 
   get isDarkMode() {
@@ -50,6 +56,17 @@ export class HeaderComponent {
     if (introSection) {
       const introRect = introSection.getBoundingClientRect();
       this.showHeaderContent.set(introRect.bottom <= 0);
+    }
+  }
+
+  scrollToProjects() {
+    if (this.router.url !== '/') {
+      this.router.navigate(['/'], { fragment: 'projects' });
+    } else {
+      const projectsElement = document.getElementById('projects');
+      if (projectsElement) {
+        projectsElement.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 }

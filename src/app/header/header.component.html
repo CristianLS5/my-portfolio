@@ -13,8 +13,8 @@
             [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
             <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
                     class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Home</a></li>
-            <li><a routerLink="/projects" routerLinkActive="text-blue-500"
-                    class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">Projects</a>
+            <li><a (click)="scrollToProjects()"
+                    class="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 cursor-pointer">Projects</a>
             </li>
             <li>
                 <a routerLink="/news" routerLinkActive="text-blue-500"

@@ -16,8 +16,15 @@ export class NewsComponent implements OnInit {
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
-    this.articleService.getArticles(10).subscribe(
-      (articles) => (this.articles = articles),
+    this.articleService.getArticles(9).subscribe(
+      (articles) => {
+        // Sort articles by publishedAt date in descending order
+        this.articles = articles.sort(
+          (a, b) =>
+            new Date(b.publishedAt).getTime() -
+            new Date(a.publishedAt).getTime()
+        );
+      },
       (error) => console.error('Error fetching GitHub releases:', error)
     );
   }
