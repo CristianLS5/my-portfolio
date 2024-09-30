@@ -11,6 +11,7 @@ import { TypewriterComponent } from '../typewriter/typewriter.component';
 import { NgOptimizedImage } from '@angular/common';
 import { DarkModeService } from '../services/dark-mode.service';
 import { Subscription } from 'rxjs';
+import { ContactComponent } from '../contact/contact.component';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ import { Subscription } from 'rxjs';
     ArticlesComponent,
     FontAwesomeModule,
     NgOptimizedImage,
+    ContactComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],

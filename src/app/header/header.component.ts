@@ -59,13 +59,13 @@ export class HeaderComponent {
     }
   }
 
-  scrollToProjects() {
+  scrollToSection(sectionId: string) {
     if (this.router.url !== '/') {
-      this.router.navigate(['/'], { fragment: 'projects' });
+      this.router.navigate(['/'], { fragment: sectionId });
     } else {
-      const projectsElement = document.getElementById('projects');
-      if (projectsElement) {
-        projectsElement.scrollIntoView({ behavior: 'smooth' });
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }
