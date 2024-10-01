@@ -12,6 +12,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { DarkModeService } from '../services/dark-mode.service';
 import { Subscription } from 'rxjs';
 import { ContactComponent } from '../contact/contact.component';
+import { AboutComponent } from '../about/about.component';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,7 @@ import { ContactComponent } from '../contact/contact.component';
     FontAwesomeModule,
     NgOptimizedImage,
     ContactComponent,
+    AboutComponent,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
