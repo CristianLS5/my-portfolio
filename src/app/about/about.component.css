@@ -1,0 +1,85 @@
+.solar-system {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #dd0031;
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #cccccc; /* Light gray for light mode */
+  border-radius: 50%;
+  animation: rotate linear infinite;
+}
+
+.solar-system.dark-mode .orbit {
+  border-color: #555555; /* Darker gray for dark mode */
+}
+
+.planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.orbit:nth-child(2) {
+  width: 80px;
+  height: 80px;
+}
+.orbit:nth-child(3) {
+  width: 120px;
+  height: 120px;
+}
+.orbit:nth-child(4) {
+  width: 160px;
+  height: 160px;
+}
+.orbit:nth-child(5) {
+  width: 200px;
+  height: 200px;
+}
+.orbit:nth-child(6) {
+  width: 240px;
+  height: 240px;
+}
+.orbit:nth-child(7) {
+  width: 280px;
+  height: 280px;
+}
+.orbit:nth-child(8) {
+  width: 320px;
+  height: 320px;
+}
+.orbit:nth-child(9) {
+  width: 360px;
+  height: 360px;
+}
