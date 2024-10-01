@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Glow Button Styles */
+@layer components {
+  .glow-button {
+    @apply inline-flex items-center relative overflow-visible transition-all duration-300;
+  }
+
+  .glow-button::before {
+    content: "";
+    @apply absolute -top-0.5 -left-0.5 -right-0.5 -bottom-0.5 bg-transparent rounded transition-shadow duration-300 ease-in-out -z-10;
+  }
+
+  .glow-button:hover::before {
+    @apply shadow-[0_0_5px_#3b82f6,0_0_10px_#3b82f6,0_0_15px_#3b82f6];
+  }
+
+  .dark .glow-button:hover::before {
+    @apply shadow-[0_0_5px_#60a5fa,0_0_10px_#60a5fa,0_0_15px_#60a5fa];
+  }
+
+  .glow-button .arrow {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+
+  .glow-button:hover .arrow {
+    @apply translate-x-1;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.glow-button:hover .arrow {
+  animation: pulse 1.5s infinite;
+}
