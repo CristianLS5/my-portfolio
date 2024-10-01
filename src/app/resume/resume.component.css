@@ -1,0 +1,55 @@
+.experience-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+.experience-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-card:nth-child(odd) {
+  transform: translateX(-20px);
+}
+
+.experience-card:nth-child(even) {
+  transform: translateX(20px);
+}
+
+.experience-card.show:nth-child(odd),
+.experience-card.show:nth-child(even) {
+  transform: translateX(0);
+}
+
+.experience-card > div:last-child {
+  border-left: 4px solid #3b82f6; /* Blue border on the left side of the card */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-card {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .experience-card > div:first-child,
+  .experience-card > div:last-child {
+    width: 100% !important;
+  }
+
+  .experience-card > div:nth-child(2) {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+  }
+
+  .experience-card > div:last-child {
+    border-left: none;
+    border-top: 4px solid #3b82f6; /* Blue border on top for mobile view */
+  }
+}

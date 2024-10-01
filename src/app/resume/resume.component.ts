@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  QueryList,
+  signal,
+  ViewChildren,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Experience {
@@ -18,12 +25,14 @@ interface Experience {
   templateUrl: './resume.component.html',
   styleUrls: ['./resume.component.css'],
 })
-export class ResumeComponent {
-  experiences: Experience[] = [
+export class ResumeComponent implements AfterViewInit {
+  @ViewChildren('experienceCard') experienceCards!: QueryList<ElementRef>;
+
+  experiences = signal<Experience[]>([
     {
       id: 1,
       startDate: 'January 2024',
-      endDate: 'Current',
+      endDate: 'March 2024',
       company: 'NBX Digital',
       role: 'Frontend Developer',
       description:
@@ -70,16 +79,97 @@ export class ResumeComponent {
         'Analysis of performance issues between the components and a data visualization library.',
       ],
     },
-  ];
+    {
+      id: 5,
+      startDate: 'January 2022',
+      endDate: 'August 2023',
+      company: 'GFT Technologies',
+      role: 'Frontend Developer',
+      description:
+        'Frontend Developer, first for Sistemes Electrònics Progrés and then for Vegga Digital, using Angular 13, AngularJS and StencilJS',
+      tasks: [
+        'Migrated an application from Angular 8 to Angular 13',
+        'Added new columns in the database for some tables through backend using a Java library',
+        'Improved the application using Stencil, which is a design system based in web components',
+        'Collaborated in the change of the authorization method to log into the application, the backend proxy and the backend environment',
+        'Used TypeScript (Angular 13) and JavaScript (AngularJS) to make changes to the current logic of the application to adapt new functionalities such as grids, overlays, search engines, and forms',
+        'Researched and resolved incidents affecting the application, with respective solutions on the frontend when applicable, or escalation of the issue to the backend for data-related problems',
+        'Collaborated with stakeholders during development processes to confirm creative proposals and design best practices',
+        'Designed and updated layouts to meet usability and performance requirements',
+        'Followed SDLC best practices within Agile environment to produce rapid iterations for clients',
+      ],
+    },
+    {
+      id: 6,
+      startDate: 'January 2018',
+      endDate: 'January 2022',
+      company: 'GFT Technologies',
+      role: 'Production Support Analyst',
+      description: 'Production Support Analyst for Deutsche Bank',
+      tasks: [
+        'GTP project for Deutsche Bank changed to Squad using the Agile methodology',
+        'Application maintenance for the ones which are deployed in UAT and PRD',
+        'Incident analysis and resolution',
+        'Changes, deployments, releases and Disaster Recovery interventions',
+        'Application monitoring and alerting for the ones which are developed in Kubernetes using Scribe-Splunk',
+        'System monitoring with tools like Graphana, APPDynamics',
+        'Internal reports like the KPIs report and the abends report',
+        'Automate some Excel functionalities used by the project with VB programming language',
+        'Start the GLUE project for Deutsche Bank',
+        'APIs creation using the WSO2 platform',
+        'Users/clients management who are using the platform',
+        'Installation and maintenance for GLUE Classic and GLUE 2G applications',
+        'Installation for GLUE X application',
+        'Data analysis and incident resolution',
+        'Database reports',
+      ],
+    },
+    {
+      id: 7,
+      startDate: 'September 2017',
+      endDate: 'December 2017',
+      company: 'GFT Technologies',
+      role: 'Junior Software Developer',
+      description: 'Frontend developer for Banc Sabadell',
+      tasks: [
+        'Developing an internal web application for the users in JavaScript and ASP.NET using the MVC architecture',
+      ],
+    },
+    {
+      id: 8,
+      startDate: 'May 2016',
+      endDate: 'April 2027',
+      company: 'Actelgrup',
+      role: 'Frontend Web Developer',
+      description: '',
+      tasks: ['Dual vocational training'],
+    },
+  ]);
 
-  toggleTasks(event: Event) {
-    const target = event.currentTarget as HTMLElement;
-    const tasks = target.querySelector('.tasks');
-    tasks?.classList.toggle('hidden');
-    document.querySelectorAll('.experience-card').forEach((item) => {
-      if (item !== target) {
-        item.classList.toggle('opacity-50');
-      }
-    });
+  ngAfterViewInit() {
+    this.observeExperienceCards();
+  }
+
+  private observeExperienceCards() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              (entry.target as HTMLElement).classList.add('show');
+            }, 100);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    this.experienceCards.forEach((card) =>
+      observer.observe(card.nativeElement)
+    );
+  }
+
+  getYear(date: string): string {
+    return date.split(' ')[1] || date; // This will return the year or the full date if splitting fails
   }
 }

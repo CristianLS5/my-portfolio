@@ -1,0 +1,39 @@
+.typewriter-container {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.bracket,
+::ng-deep .typed-cursor,
+::ng-deep .typed-element {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.bracket {
+  font-size: 1.8em;
+  margin: 0 0.1em;
+}
+
+::ng-deep .typed-cursor,
+::ng-deep .typed-element {
+  font-size: 1.4em;
+  letter-spacing: 0.05em;
+}
+
+/* Light mode styles */
+:host-context(:not(.dark)) .bracket,
+:host-context(:not(.dark)) ::ng-deep .typed-cursor,
+:host-context(:not(.dark)) ::ng-deep .typed-element {
+  color: #a0a0a0;
+  text-shadow: 0 0 5px #a0a0a0, 0 0 10px #a0a0a0;
+}
+
+/* Dark mode styles */
+:host-context(.dark) .bracket,
+:host-context(.dark) ::ng-deep .typed-cursor,
+:host-context(.dark) ::ng-deep .typed-element {
+  color: #ffd700;
+  text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+}
