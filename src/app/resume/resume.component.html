@@ -1,0 +1,27 @@
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-16">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">My Experience</h1>
+
+        <div class="space-y-8">
+            @for (exp of experiences; track exp.id) {
+            <div class="experience-card bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition-all duration-300"
+                appAnimateOnScroll (click)="toggleTasks($event)">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ exp.role }}</h3>
+                        <h4 class="text-lg text-gray-700 dark:text-gray-300">{{ exp.company }}</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">{{ exp.startDate }} - {{ exp.endDate }}</p>
+                </div>
+                <div class="tasks hidden mt-4">
+                    <ul class="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                        @for (task of exp.tasks; track task) {
+                        <li>{{ task }}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
