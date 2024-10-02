@@ -3,7 +3,7 @@
     "HOME": "Inicio",
     "ABOUT": "Sobre mí",
     "PROJECTS": "Proyectos",
-    "NEWS": "Noticias",
+    "NEWS": "Novedades",
     "CONTACT": "Contacto",
     "RESUME": "Currículum"
   },
@@ -14,7 +14,7 @@
     "GREETING": "Hola, soy Cristian",
     "WELCOME": "Bienvenido a mi portafolio",
     "DESCRIPTION": "Soy un desarrollador front-end apasionado especializado en Angular, creando interfaces de usuario limpias y eficientes.\nCuando no estoy inmerso en el código, me encontrarás explorando la cultura japonesa 🇯🇵, sumergiéndome en cautivadores mundos de videojuegos 🎮 o siguiendo las últimas aventuras de Marvel 🦸‍♂️.",
-    "BUTTON.WORK": "Ver Trabajo",
+    "BUTTON.WORK": "Ver Mis Proyectos",
     "BUTTON.CONTACT": "Contacto"
   },
   "ABOUT": {

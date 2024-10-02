@@ -1,7 +1,9 @@
+import { Component, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, signal } from '@angular/core';
 import { Project } from '../models/project.interface';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -10,13 +12,28 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css',
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit, OnDestroy {
   projects = signal<Project[]>([]);
+  private langChangeSubscription: Subscription | undefined;
 
-  constructor(private translate: TranslateService) {}
+  constructor(
+    private translate: TranslateService,
+    private languageService: LanguageService
+  ) {}
 
   ngOnInit() {
     this.loadProjects();
+    this.langChangeSubscription = this.languageService.currentLang$.subscribe(
+      () => {
+        this.loadProjects();
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
   }
 
   loadProjects() {
