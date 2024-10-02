@@ -1,1 +1,24 @@
-<p>footer works!</p>
+<footer class="bg-gray-100 dark:bg-gray-800 py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col sm:flex-row items-center sm:items-start justify-between">
+            <div class="w-1/4 hidden sm:block">
+                <!-- Empty div for spacing on larger screens -->
+            </div>
+            <div class="w-full sm:w-2/4 mb-4 sm:mb-0">
+                <p class="text-gray-600 dark:text-gray-300 text-center">&copy; {{ currentYear }} Cristian López. All
+                    rights reserved.</p>
+            </div>
+            <div class="w-full sm:w-1/4 flex justify-center sm:justify-end space-x-4">
+                <a href="https://github.com/CristianLS5" target="_blank" rel="noopener noreferrer"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
+                    <fa-icon [icon]="faGithub" size="lg"></fa-icon>
+                </a>
+                <a href="https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US"
+                    target="_blank" rel="noopener noreferrer"
+                    class="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
+                    <fa-icon [icon]="faLinkedin" size="lg"></fa-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
