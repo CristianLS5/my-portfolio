@@ -13,10 +13,10 @@ export class ProjectsComponent {
   projects = signal<Project[]>([
     {
       id: 1,
-      title: 'Angular Project',
-      description: 'A sample Angular project',
-      backgroundImage: 'assets/images/angular.png',
-      tags: ['Angular', 'TypeScript', 'RxJS'],
+      title: 'My Portfolio',
+      description: 'Personal website showcasing my projects and skills',
+      backgroundImage: 'assets/images/my-portfolio-intro.png',
+      tags: ['Angular', 'Node.js', 'Tailwind CSS'],
     },
     {
       id: 2,
