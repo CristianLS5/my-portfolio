@@ -1,0 +1,22 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h2 class="text-4xl font-bold mb-8 text-left">Projects</h2>
+    <div class="projects grid grid-cols-1 md:grid-cols-2 gap-8">
+        @for (project of projects(); track project.id) {
+        <div class="projects__item group">
+            <div class="project" [style.backgroundImage]="'url(' + project.backgroundImage + ')'"
+                [attr.data-first-tag]="project.tags[0]">
+                <div class="project__content">
+                    <h3 class="project__title text-xl font-bold mb-2">{{ project.title }}</h3>
+                    <p class="project__description text-sm mb-2">{{ project.description }}</p>
+                    <div class="project__tags flex flex-wrap">
+                        @for (tag of project.tags; track tag) {
+                        <span class="project__tag text-xs px-2 py-1 rounded mr-2 mb-2 font-semibold"
+                            [attr.data-tag]="tag">{{ tag }}</span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

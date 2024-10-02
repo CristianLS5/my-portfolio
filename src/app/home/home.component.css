@@ -178,3 +178,66 @@
   z-index: 2;
   padding: 24px; /* Add padding to create space inside the LED border */
 }
+
+.glow-button {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+.glow-button::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: transparent;
+  border-radius: inherit;
+  transition: box-shadow 0.3s ease-in-out;
+  z-index: -1;
+}
+
+/* Light mode - View Work button */
+.glow-button:first-child:hover::before {
+  box-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6;
+}
+
+/* Light mode - Contact button */
+.glow-button:nth-child(2):hover::before {
+  box-shadow: 0 0 5px #9ca3af, 0 0 10px #9ca3af, 0 0 15px #9ca3af;
+}
+
+/* Dark mode - View Work button */
+:host-context(.dark) .glow-button:first-child:hover::before {
+  box-shadow: 0 0 5px #60a5fa, 0 0 10px #60a5fa, 0 0 15px #60a5fa;
+}
+
+/* Dark mode - Contact button */
+:host-context(.dark) .glow-button:nth-child(2):hover::before {
+  box-shadow: 0 0 5px #d1d5db, 0 0 10px #d1d5db, 0 0 15px #d1d5db;
+}
+
+.glow-button .arrow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.glow-button:hover .arrow {
+  transform: translateX(4px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.glow-button:hover .arrow {
+  animation: pulse 1.5s infinite;
+}

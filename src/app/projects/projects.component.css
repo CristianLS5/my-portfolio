@@ -1,0 +1,105 @@
+.projects {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
+
+.projects__item {
+  @apply w-full;
+}
+
+.project {
+  @apply relative h-64 bg-cover bg-center rounded-lg overflow-hidden transition-all duration-300 ease-in-out;
+  position: relative;
+  transform: scale(1);
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay by default */
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.group:hover .project {
+  transform: scale(0.98);
+}
+
+.group:hover .project::before {
+  opacity: 1;
+  box-shadow: 0 0 20px 10px currentColor, inset 0 0 20px 5px currentColor;
+}
+
+.group:hover .project::after {
+  opacity: 0; /* Remove the overlay on hover */
+}
+
+.project__content {
+  @apply absolute inset-0 text-white p-4 flex flex-col justify-end transition-all duration-300;
+  z-index: 2;
+}
+
+.group:hover .project__content {
+  @apply bg-opacity-50;
+}
+
+.project__title,
+.project__description,
+.project__tag {
+  transition: color 0.3s ease-in-out;
+}
+
+.group:hover .project__title,
+.group:hover .project__description,
+.group:hover .project__tag {
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.project__tag {
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 5px currentColor;
+  border: 1px solid currentColor;
+}
+
+.project__tag[data-tag="Angular"] {
+  @apply bg-red-900 text-red-200;
+}
+
+.project__tag[data-tag="TypeScript"] {
+  @apply bg-blue-900 text-blue-200;
+}
+.project__tag[data-tag="Node.js"] {
+  @apply bg-green-900 text-green-200;
+}
+
+.project__tag[data-tag="Tailwind CSS"] {
+  @apply bg-teal-900 text-teal-200;
+}
+
+.project__tag[data-tag="RxJS"] {
+  @apply bg-pink-900 text-pink-200;
+}
+
+.project__tag[data-tag="React"] {
+  @apply bg-cyan-900 text-cyan-200;
+}
+
+.project__tag[data-tag="JavaScript"] {
+  @apply bg-yellow-900 text-yellow-200;
+}
+
+.project__tag[data-tag="Redux"] {
+  @apply bg-purple-900 text-purple-200;
+}

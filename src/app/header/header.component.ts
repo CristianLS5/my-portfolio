@@ -8,28 +8,47 @@ import {
   HostListener,
   ElementRef,
 } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  Router,
+  RouterLink,
+  RouterLinkActive,
+  RouterModule,
+} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLaptopCode, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
+import { DarkModeService } from '../services/dark-mode.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    FontAwesomeModule,
+    RouterModule,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Input() isDarkMode!: boolean;
   @Output() toggleDarkMode = new EventEmitter<void>();
   showHeaderContent = signal(false);
+
+  constructor(
+    private el: ElementRef,
+    public darkModeService: DarkModeService,
+    private router: Router
+  ) {}
+
+  get isDarkMode() {
+    return this.darkModeService.isDarkMode();
+  }
 
   faLaptopCode = faCode; // Icon for software
   faCode = faLaptopCode; // Icon for frontend
   faAngular = faAngular; // Icon for Angular
-
-  constructor(private el: ElementRef) {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -37,6 +56,17 @@ export class HeaderComponent {
     if (introSection) {
       const introRect = introSection.getBoundingClientRect();
       this.showHeaderContent.set(introRect.bottom <= 0);
+    }
+  }
+
+  scrollToSection(sectionId: string) {
+    if (this.router.url !== '/') {
+      this.router.navigate(['/'], { fragment: sectionId });
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }
 }

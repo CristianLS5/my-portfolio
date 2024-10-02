@@ -1,0 +1,53 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <h2 class="text-4xl font-bold mb-8 text-left">Skills</h2>
+    <div class="skills grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+        @for (skill of skills; track skill.name) {
+        <div class="skill-item">
+            <div class="w-12 h-12 flex items-center justify-center skill-icon">
+                @if (skill.isSvg) {
+                @switch (skill.icon) {
+                @case ('tailwind-css.svg') {
+                <img ngSrc="assets/icons/tailwind-css.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('typescript.svg') {
+                <img ngSrc="assets/icons/typescript.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('rxjs.svg') {
+                <img ngSrc="assets/icons/rxjs.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('javascript.svg') {
+                <img ngSrc="assets/icons/javascript.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('cypress.svg') {
+                <img ngSrc="assets/icons/cypress.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('karma.svg') {
+                <img ngSrc="assets/icons/karma.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('jasmine.svg') {
+                <img ngSrc="assets/icons/jasmine.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('sass.svg') {
+                <img ngSrc="assets/icons/sass.svg" [alt]="skill.name" width="48" height="48">
+                }
+                @case ('stencil.svg') {
+                <img ngSrc="assets/icons/stencil.svg" [alt]="skill.name" width="48" height="48"
+                    [ngClass]="{'dark-mode-icon': isDarkMode}">
+                }
+                @case ('azuredevops') {
+                <svg xmlns="http://www.w3.org/2000/svg" [attr.fill]="skill.color" viewBox="0 0 24 24" class="w-12 h-12">
+                    <path
+                        d="M0 8.877L2.247 5.91l8.405-3.416V.022l7.37 5.393L2.966 8.338v8.225L0 15.707zm24-4.45v14.651l-5.753 4.9-9.303-3.057v3.056l-5.978-7.416 15.057 1.798V5.415z" />
+                </svg>
+                }
+                }
+                } @else {
+                <fa-icon [icon]="skill.icon" [style.color]="skill.color" [size]="'3x'"
+                    [ngClass]="{'dark-mode-icon': isDarkMode && skill.name === 'GitHub'}"></fa-icon>
+                }
+            </div>
+            <span class="mt-2 text-sm skill-name">{{ skill.name }}</span>
+        </div>
+        }
+    </div>
+</div>

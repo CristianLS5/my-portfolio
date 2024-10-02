@@ -2,7 +2,6 @@
        'bg-white text-gray-900 border-white': !isDarkMode, 
        'bg-gray-900 text-white border-gray-800': isDarkMode
      }">
-  <app-header [isDarkMode]="isDarkMode" (toggleDarkMode)="toggleDarkMode()"></app-header>
-  <app-intro [isDarkMode]="isDarkMode"></app-intro>
+  <app-header (toggleDarkMode)="toggleDarkMode()"></app-header>
   <router-outlet></router-outlet>
 </div>

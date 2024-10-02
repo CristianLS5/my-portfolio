@@ -1,0 +1,44 @@
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="flex items-center mb-8">
+        <h2 class="text-4xl font-bold text-left mr-4 text-gray-900 dark:text-white">Angular News</h2>
+        <a routerLink="/news"
+            class="glow-button bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300 flex items-center">
+            See More
+            <svg xmlns="http://www.w3.org/2000/svg" class="arrow h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd" />
+            </svg>
+        </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        @for (article of displayedArticles(); track article.id) {
+        <article
+            class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-300 bg-white dark:bg-gray-800 hover:scale-105 dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+            <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{{ article.title }}</h3>
+            <p class="text-sm mb-2 inline-flex items-center text-gray-700 dark:text-gray-300">
+                <span class="w-3 h-3 rounded-full mr-2"
+                    [ngClass]="{'bg-green-500': article.releaseType === 'Stable Release', 'bg-orange-500': article.releaseType === 'Pre-release'}"></span>
+                Type: {{ article.releaseType }}
+            </p>
+            @if (article.isBreakingChange) {
+            <p class="text-red-600 dark:text-red-400 font-semibold mb-2">Breaking Change</p>
+            }
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{{ article.commitSummary }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Released: {{ article.publishedAt | date:'medium' }}
+            </p>
+            <a [href]="article.url" target="_blank"
+                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">View
+                on GitHub</a>
+        </article>
+        }
+    </div>
+
+    @if (showMoreButton && displayedArticles().length < articles().length) { <div class="text-center mt-8">
+        <button (click)="loadMore()"
+            class="glow-button bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300">
+            Load More
+        </button>
+</div>
+}
+</div>

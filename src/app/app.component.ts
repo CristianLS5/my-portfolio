@@ -1,25 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { IntroComponent } from './intro/intro.component';
+import { DarkModeService } from './services/dark-mode.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, IntroComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   isDarkMode = false;
+  private darkModeSubscription: Subscription | undefined;
+
+  constructor(private darkModeService: DarkModeService) {}
+
+  ngOnInit() {
+    this.darkModeSubscription = this.darkModeService.darkMode$.subscribe(
+      (isDark) => {
+        this.isDarkMode = isDark;
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.darkModeSubscription?.unsubscribe();
+  }
 
   toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    this.darkModeService.toggleDarkMode();
   }
 }

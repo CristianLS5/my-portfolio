@@ -1,0 +1,28 @@
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-16">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Latest Angular Releases</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            @for (article of articles; track article.id) {
+            <article
+                class="border border-gray-200 dark:border-gray-700 rounded-lg p-4 shadow-sm hover:shadow-md transition-all duration-300 bg-white dark:bg-gray-800 hover:scale-105 dark:hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">{{ article.title }}</h3>
+                <p class="text-sm mb-2 inline-flex items-center text-gray-700 dark:text-gray-300">
+                    <span class="w-3 h-3 rounded-full mr-2"
+                        [ngClass]="{'bg-green-500': article.releaseType === 'Stable Release', 'bg-orange-500': article.releaseType === 'Pre-release'}"></span>
+                    Type: {{ article.releaseType }}
+                </p>
+                @if (article.isBreakingChange) {
+                <p class="text-red-600 dark:text-red-400 font-semibold mb-2">Breaking Change</p>
+                }
+                <p class="text-gray-600 dark:text-gray-300 mb-4">{{ article.commitSummary }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Released: {{ article.publishedAt |
+                    date:'medium' }}</p>
+                <a [href]="article.url" target="_blank"
+                    class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">View
+                    on GitHub</a>
+            </article>
+            }
+        </div>
+    </div>
+</div>

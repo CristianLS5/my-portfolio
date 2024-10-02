@@ -6,6 +6,7 @@ import { NgxTypedWriterModule } from 'ngx-typed-writer';
   standalone: true,
   imports: [NgxTypedWriterModule],
   templateUrl: './typewriter.component.html',
+  styleUrls: ['./typewriter.component.css'],
 })
 export class TypewriterComponent {
   strings = input<string[]>([]);

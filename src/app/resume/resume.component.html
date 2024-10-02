@@ -1,0 +1,35 @@
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-16">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-extrabold text-gray-900 dark:text-white mb-6 text-center">My Experience</h1>
+
+        <div class="relative">
+            <!-- Timeline stem -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200 dark:bg-gray-700"></div>
+
+            <!-- Experience cards -->
+            @for (exp of experiences(); track exp.id; let i = $index) {
+            <div #experienceCard class="experience-card mb-16 flex justify-between items-center w-full"
+                [class.flex-row-reverse]="i % 2 !== 0">
+                <div class="w-5/12"></div>
+                <div class="z-20 flex flex-col items-center">
+                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                        <span class="text-sm text-white font-bold">{{ getYear(exp.startDate) }}</span>
+                    </div>
+                </div>
+                <div class="w-5/12 p-6 rounded-lg shadow-lg bg-white dark:bg-gray-800 transition-all duration-500">
+                    <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-1">{{ exp.role }}</h3>
+                    <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-1">{{ exp.company }}</h4>
+                    <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">{{ exp.startDate }} - {{
+                        exp.endDate }}</p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 italic">{{ exp.description }}</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
+                        @for (task of exp.tasks; track task) {
+                        <li class="mb-1">{{ task }}</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
