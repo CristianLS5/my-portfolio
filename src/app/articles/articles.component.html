@@ -1,9 +1,10 @@
 <div class="max-w-4xl mx-auto px-4 py-8">
     <div class="flex items-center mb-8">
-        <h2 class="text-4xl font-bold text-left mr-4 text-gray-900 dark:text-white">Angular News</h2>
+        <h2 class="text-4xl font-bold text-left mr-4 text-gray-900 dark:text-white">{{ 'NEWS.TITLE_ARTICLES' | translate
+            }}</h2>
         <a routerLink="/news"
             class="glow-button bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300 flex items-center">
-            See More
+            {{ 'NEWS.BUTTON.MORE' | translate }}
             <svg xmlns="http://www.w3.org/2000/svg" class="arrow h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
                     d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
@@ -28,17 +29,9 @@
             <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Released: {{ article.publishedAt | date:'medium' }}
             </p>
             <a [href]="article.url" target="_blank"
-                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">View
-                on GitHub</a>
+                class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium">{{
+                'NEWS.GITHUB' | translate }}</a>
         </article>
         }
     </div>
-
-    @if (showMoreButton && displayedArticles().length < articles().length) { <div class="text-center mt-8">
-        <button (click)="loadMore()"
-            class="glow-button bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300">
-            Load More
-        </button>
-</div>
-}
 </div>

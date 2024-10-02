@@ -10,11 +10,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Article } from '../models/article.interface';
 import { ArticleService } from '../services/article.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-articles',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, TranslateModule],
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.css',
 })

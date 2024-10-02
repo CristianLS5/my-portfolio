@@ -7,6 +7,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface Experience {
   id: number;
@@ -21,7 +22,7 @@ interface Experience {
 @Component({
   selector: 'app-resume',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './resume.component.html',
   styleUrls: ['./resume.component.css'],
 })

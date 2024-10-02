@@ -6,15 +6,21 @@ import { HttpClient } from '@angular/common/http';
 import {
   faUser,
   faEnvelope,
-  faHeading, // or faTag
+  faHeading,
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
 import { environment } from '../../environments/environment';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    TranslateModule,
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css',
 })

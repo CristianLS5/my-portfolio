@@ -10,6 +10,7 @@ import {
   faDocker,
 } from '@fortawesome/free-brands-svg-icons';
 import { DarkModeService } from '../services/dark-mode.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface TechLogo {
   name: string;
@@ -25,19 +26,13 @@ interface TechLogo {
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, TranslateModule],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
   private darkModeService = inject(DarkModeService);
   isDarkMode$ = this.darkModeService.darkMode$;
-
-  aboutText =
-    signal(`Experienced working with teams to produce impactful, leading-edge websites that
-    engage customers and deliver business results. Well-versed in design standards
-    and user preferences. Possesses knowledge of Angular with ability to quickly learn
-    new technologies. Demonstrated success in identifying and resolving code issues.`);
 
   centralLogo = {
     name: 'Angular',

@@ -12,18 +12,23 @@
         <ul class="flex space-x-4 transition-opacity duration-300"
             [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
             <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
-                    class="header-link">Home</a></li>
-            <li><a (click)="scrollToSection('about')" class="header-link cursor-pointer">About</a>
+                    class="header-link">{{ 'HEADER.HOME' | translate }}</a></li>
+            <li><a (click)="scrollToSection('about')" class="header-link cursor-pointer">{{ 'HEADER.ABOUT' | translate
+                    }}</a>
             </li>
-            <li><a (click)="scrollToSection('projects')" class="header-link cursor-pointer">Projects</a>
-            </li>
-            <li>
-                <a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">News</a>
-            </li>
-            <li><a (click)="scrollToSection('contact')" class="header-link cursor-pointer">Contact</a>
+            <li><a (click)="scrollToSection('projects')" class="header-link cursor-pointer">{{ 'HEADER.PROJECTS' |
+                    translate }}</a>
             </li>
             <li>
-                <a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">Resume</a>
+                <a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.NEWS' |
+                    translate }}</a>
+            </li>
+            <li><a (click)="scrollToSection('contact')" class="header-link cursor-pointer">{{ 'HEADER.CONTACT' |
+                    translate }}</a>
+            </li>
+            <li>
+                <a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.RESUME' |
+                    translate }}</a>
             </li>
         </ul>
         <button (click)="darkModeService.toggleDarkMode()"

@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLaptopCode, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { DarkModeService } from '../services/dark-mode.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,7 @@ import { DarkModeService } from '../services/dark-mode.service';
     RouterLinkActive,
     FontAwesomeModule,
     RouterModule,
+    TranslateModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

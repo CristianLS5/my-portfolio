@@ -1,44 +1,54 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { Project } from '../models/project.interface';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage],
+  imports: [CommonModule, NgOptimizedImage, TranslateModule],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css',
 })
 export class ProjectsComponent {
-  projects = signal<Project[]>([
-    {
-      id: 1,
-      title: 'My Portfolio',
-      description: 'Personal website showcasing my projects and skills',
-      backgroundImage: 'assets/images/my-portfolio-intro.png',
-      tags: ['Angular', 'Node.js', 'Tailwind CSS'],
-    },
-    {
-      id: 2,
-      title: 'React Project',
-      description: 'A sample React project',
-      backgroundImage: 'assets/images/react.png',
-      tags: ['React', 'JavaScript', 'Redux'],
-    },
-    {
-      id: 3,
-      title: 'React Project',
-      description: 'A sample React project',
-      backgroundImage: 'assets/images/react.png',
-      tags: ['React', 'JavaScript', 'Redux'],
-    },
-    {
-      id: 4,
-      title: 'Angular Project',
-      description: 'A sample Angular project',
-      backgroundImage: 'assets/images/angular.png',
-      tags: ['Angular', 'TypeScript', 'RxJS'],
-    },
-    // Add more projects as needed
-  ]);
+  projects = signal<Project[]>([]);
+
+  constructor(private translate: TranslateService) {}
+
+  ngOnInit() {
+    this.loadProjects();
+  }
+
+  loadProjects() {
+    this.projects.set([
+      {
+        id: 1,
+        title: this.translate.instant('PROJECTS.PROJECT1.TITLE'),
+        description: this.translate.instant('PROJECTS.PROJECT1.DESCRIPTION'),
+        backgroundImage: 'assets/images/my-portfolio-intro.png',
+        tags: ['Angular', 'Node.js', 'Tailwind CSS'],
+      },
+      {
+        id: 2,
+        title: this.translate.instant('PROJECTS.PROJECT2.TITLE'),
+        description: this.translate.instant('PROJECTS.PROJECT2.DESCRIPTION'),
+        backgroundImage: 'assets/images/react.png',
+        tags: ['React', 'JavaScript', 'Redux'],
+      },
+      {
+        id: 3,
+        title: this.translate.instant('PROJECTS.PROJECT3.TITLE'),
+        description: this.translate.instant('PROJECTS.PROJECT3.DESCRIPTION'),
+        backgroundImage: 'assets/images/react.png',
+        tags: ['React', 'JavaScript', 'Redux'],
+      },
+      {
+        id: 4,
+        title: this.translate.instant('PROJECTS.PROJECT4.TITLE'),
+        description: this.translate.instant('PROJECTS.PROJECT4.DESCRIPTION'),
+        backgroundImage: 'assets/images/angular.png',
+        tags: ['Angular', 'TypeScript', 'RxJS'],
+      },
+    ]);
+  }
 }
