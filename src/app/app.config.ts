@@ -6,10 +6,10 @@ import {
 } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { routes } from './app.routes';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
 import { provideHttpClient } from '@angular/common/http';
+import { TranslateConfigService } from './services/translate-config.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +23,10 @@ export const appConfig: ApplicationConfig = {
     ),
     provideAnimations(),
     provideHttpClient(),
-    importProvidersFrom(FontAwesomeModule, NgxTypedWriterModule),
+    importProvidersFrom(
+      FontAwesomeModule,
+      NgxTypedWriterModule,
+      TranslateConfigService.getTranslateModule()
+    ),
   ],
 };
