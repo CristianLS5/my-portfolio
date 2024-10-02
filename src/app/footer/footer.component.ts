@@ -6,11 +6,12 @@ import {
   faLinkedin,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, TranslateModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
 })

@@ -18,7 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLaptopCode, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { DarkModeService } from '../services/dark-mode.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -37,12 +38,17 @@ import { TranslateModule } from '@ngx-translate/core';
 export class HeaderComponent {
   @Output() toggleDarkMode = new EventEmitter<void>();
   showHeaderContent = signal(false);
+  currentLang: string;
 
   constructor(
     private el: ElementRef,
     public darkModeService: DarkModeService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translateService: TranslateService,
+    private languageService: LanguageService
+  ) {
+    this.currentLang = this.translateService.currentLang;
+  }
 
   get isDarkMode() {
     return this.darkModeService.isDarkMode();
@@ -70,5 +76,10 @@ export class HeaderComponent {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  }
+
+  toggleLanguage() {
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
+    this.languageService.setLanguage(this.currentLang);
   }
 }
