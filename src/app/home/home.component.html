@@ -5,8 +5,8 @@
             <div class="home-content__led-border"></div>
             <div class="home-content__inner flex flex-col md:flex-row items-center max-w-4xl w-full mx-auto">
                 <div class="md:w-1/2 md:pr-8">
-                    <h1 class="text-4xl font-bold mb-4">Hello, I'm Cristian</h1>
-                    <p class="text-xl mb-8">Welcome to my portfolio</p>
+                    <h1 class="text-4xl font-bold mb-4">{{ 'HOME.GREETING' | translate }}</h1>
+                    <p class="text-xl mb-8">{{ 'HOME.WELCOME' | translate }}</p>
                     <p class="text-lg">
                         I'm
                         <span>
@@ -14,9 +14,7 @@
                         </span>
                     </p>
                     <p class="text-lg mt-2">
-                        I'm a passionate front-end developer specialized in Angular, crafting clean and efficient user
-                        interfaces. When I'm not immersed in code, you'll find me exploring Japanese culture 🇯🇵,
-                        diving into captivating video game worlds 🎮, or following the latest Marvel adventures 🦸‍♂️.
+                        {{ 'HOME.DESCRIPTION' | translate}}
                     </p>
                     <div class="mt-8 flex space-x-4">
                         <a href="https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US"
@@ -32,7 +30,7 @@
                     <div class="mt-8">
                         <a href="#projects"
                             class="glow-button bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300 flex items-center">
-                            View Work
+                            {{ 'HOME.BUTTON.WORK' | translate }}
                             <svg xmlns="http://www.w3.org/2000/svg" class="arrow h-5 w-5 ml-2" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -42,7 +40,7 @@
                         </a>
                         <a href="#contact"
                             class="glow-button bg-gray-200 text-gray-900 px-4 py-2 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition duration-300">
-                            Contact
+                            {{ 'HOME.BUTTON.CONTACT' | translate }}
                         </a>
                     </div>
                 </div>

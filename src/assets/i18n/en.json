@@ -1,0 +1,78 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "PROJECTS": "Projects",
+    "NEWS": "News",
+    "CONTACT": "Contact",
+    "RESUME": "Resume"
+  },
+  "FOOTER": {
+    "RIGHTS": "All rights reserved"
+  },
+  "HOME": {
+    "GREETING": "Hello, I'm Cristian",
+    "WELCOME": "Welcome to my portfolio",
+    "DESCRIPTION": "I'm a passionate front-end developer specialized in Angular, crafting clean and efficient user interfaces.\nWhen I'm not immersed in code, you'll find me exploring Japanese culture 🇯🇵, diving into captivating video game worlds 🎮, or following the latest Marvel adventures 🦸‍♂️.",
+    "BUTTON.WORK": "View Work",
+    "BUTTON.CONTACT": "Contact"
+  },
+  "ABOUT": {
+    "TITLE": "About Me",
+    "DESCRIPTION": "Experienced working with teams to produce impactful, leading-edge websites that engage customers and deliver business results. Well-versed in design standards and user preferences. Possesses knowledge of Angular with ability to quickly learn new technologies. Demonstrated success in identifying and resolving code issues."
+  },
+  "PROJECTS": {
+    "TITLE": "Projects",
+    "PROJECT1": {
+      "TITLE": "My Portfolio",
+      "DESCRIPTION": "Personal website showcasing my projects and skills"
+    },
+    "PROJECT2": {
+      "TITLE": "React Project",
+      "DESCRIPTION": "A sample React project"
+    },
+    "PROJECT3": {
+      "TITLE": "React Project",
+      "DESCRIPTION": "A sample React project"
+    },
+    "PROJECT34": {
+      "TITLE": "Angular Project",
+      "DESCRIPTION": "A sample Angular project"
+    }
+  },
+  "NEWS": {
+    "TITLE_ARTICLES": "Angular News",
+    "TITLE_NEWS": "Latest Angular Releases",
+    "BUTTON": {
+      "MORE": "See more"
+    },
+    "GITHUB": "View on GitHub"
+  },
+
+  "CONTACT": {
+    "TITLE": "Contact",
+    "BUTTON": {
+      "SEND": "Send Message"
+    },
+    "PLACEHOLDER": {
+      "NAME": "Your Name",
+      "EMAIL": "Your Email",
+      "SUBJECT": "Your Subject",
+      "MESSAGE": "Your Message"
+    },
+    "ERROR": {
+      "NAME": "Please enter a valid name",
+      "EMAIL": "Please enter a valid email address",
+      "SUBJECT": "Please enter a subject",
+      "MESSAGE": "Please enter a message (at least 10 characters)"
+    },
+    "VALIDATION": {
+      "SUCCESS": "Your message has been sent successfully!",
+      "ERROR": "There was an error sending your message. Please try again later."
+    }
+  },
+
+  "RESUME": {
+    "TITLE": "My Experience"
+  }
+}
