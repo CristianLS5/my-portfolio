@@ -3,6 +3,10 @@ import { ProjectsComponent } from './projects.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../services/language.service';
 import { BehaviorSubject } from 'rxjs';
+import {
+  mockTranslateService,
+  mockLanguageService,
+} from '../testing/mock-services';
 
 describe('ProjectsComponent', () => {
   let component: ProjectsComponent;
@@ -12,17 +16,19 @@ describe('ProjectsComponent', () => {
   let languageSubject: BehaviorSubject<string>;
 
   beforeEach(async () => {
-    const translateSpy = jasmine.createSpyObj('TranslateService', ['instant']);
     languageSubject = new BehaviorSubject<string>('en');
-    const languageSpy = jasmine.createSpyObj('LanguageService', [''], {
-      currentLang$: languageSubject.asObservable(),
-    });
 
     await TestBed.configureTestingModule({
       imports: [ProjectsComponent, TranslateModule.forRoot()],
       providers: [
-        { provide: TranslateService, useValue: translateSpy },
-        { provide: LanguageService, useValue: languageSpy },
+        { provide: TranslateService, useValue: mockTranslateService },
+        {
+          provide: LanguageService,
+          useValue: {
+            ...mockLanguageService,
+            currentLang$: languageSubject.asObservable(),
+          },
+        },
       ],
     }).compileComponents();
 
@@ -54,6 +60,7 @@ describe('ProjectsComponent', () => {
 
     translateService.instant.and.returnValue('New Title');
     languageSubject.next('es');
+    fixture.detectChanges();
     expect(component.projects()[0].title).toBe('New Title');
   });
 

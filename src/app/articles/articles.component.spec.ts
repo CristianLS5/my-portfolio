@@ -2,16 +2,47 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticlesComponent } from './articles.component';
 import { ArticleService } from '../services/article.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterModule,
+  UrlTree,
+} from '@angular/router';
 import { of } from 'rxjs';
 import { Article } from '../models/article.interface';
+import {
+  mockTranslateService,
+  mockActivatedRoute,
+} from '../testing/mock-services';
+import { NO_ERRORS_SCHEMA, Component, Directive, Input } from '@angular/core';
+
+// Mock Router
+class MockRouter {
+  createUrlTree(): UrlTree {
+    return {} as UrlTree;
+  }
+  serializeUrl(): string {
+    return '';
+  }
+  events = of(null);
+}
+
+// Mock RouterLink directive
+@Directive({
+  selector: '[routerLink]',
+  standalone: true,
+})
+class MockRouterLinkDirective {
+  @Input() routerLink: any;
+  constructor() {}
+}
 
 describe('ArticlesComponent', () => {
   let component: ArticlesComponent;
   let fixture: ComponentFixture<ArticlesComponent>;
   let articleServiceSpy: jasmine.SpyObj<ArticleService>;
   let translateServiceSpy: jasmine.SpyObj<TranslateService>;
-  let routerSpy: jasmine.SpyObj<Router>;
 
   const mockArticles: Article[] = [
     {
@@ -43,22 +74,34 @@ describe('ArticlesComponent', () => {
     },
   ];
 
-  beforeEach(async () => {
+  beforeEach(() => {
     articleServiceSpy = jasmine.createSpyObj('ArticleService', ['getArticles']);
-    translateServiceSpy = jasmine.createSpyObj('TranslateService', ['instant']);
-    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+    articleServiceSpy.getArticles.and.returnValue(of([])); // Return an empty array by default
+  });
 
+  beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ArticlesComponent, TranslateModule.forRoot()],
+      imports: [
+        ArticlesComponent,
+        TranslateModule.forRoot(),
+        RouterModule.forRoot([]),
+        MockRouterLinkDirective, // Add this line
+      ],
       providers: [
         { provide: ArticleService, useValue: articleServiceSpy },
-        { provide: TranslateService, useValue: translateServiceSpy },
-        { provide: Router, useValue: routerSpy },
+        { provide: TranslateService, useValue: mockTranslateService },
+        { provide: Router, useClass: MockRouter },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
       ],
+      // Remove the declarations array
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ArticlesComponent);
     component = fixture.componentInstance;
+    translateServiceSpy = TestBed.inject(
+      TranslateService
+    ) as jasmine.SpyObj<TranslateService>;
   });
 
   it('should create', () => {
@@ -80,6 +123,7 @@ describe('ArticlesComponent', () => {
   });
 
   it('should show more button when showMoreButton is true', () => {
+    articleServiceSpy.getArticles.and.returnValue(of(mockArticles));
     component.showMoreButton = true;
     fixture.detectChanges();
     const moreButton = fixture.nativeElement.querySelector('.glow-button');
@@ -87,10 +131,19 @@ describe('ArticlesComponent', () => {
   });
 
   it('should not show more button when showMoreButton is false', () => {
+    articleServiceSpy.getArticles.and.returnValue(of(mockArticles));
     component.showMoreButton = false;
     fixture.detectChanges();
     const moreButton = fixture.nativeElement.querySelector('.glow-button');
     expect(moreButton).toBeFalsy();
+  });
+
+  it('should link to /news when more button is clicked', () => {
+    articleServiceSpy.getArticles.and.returnValue(of(mockArticles));
+    component.showMoreButton = true;
+    fixture.detectChanges();
+    const moreButton = fixture.nativeElement.querySelector('.glow-button');
+    expect(moreButton.getAttribute('routerLink')).toBe('/news');
   });
 
   it('should load more articles when loadMore is called', () => {
@@ -104,6 +157,8 @@ describe('ArticlesComponent', () => {
 
   it('should display correct article information', () => {
     articleServiceSpy.getArticles.and.returnValue(of(mockArticles));
+    fixture.detectChanges();
+    component.ngOnInit();
     fixture.detectChanges();
     const articleElements = fixture.nativeElement.querySelectorAll('article');
     expect(articleElements.length).toBe(3);

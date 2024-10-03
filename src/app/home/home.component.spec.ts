@@ -2,8 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DarkModeService } from '../services/dark-mode.service';
+import { LanguageService } from '../services/language.service';
+import { ArticleService } from '../services/article.service';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 import { of } from 'rxjs';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  mockTranslateService,
+  mockDarkModeService,
+  mockArticleService,
+  mockActivatedRoute,
+} from '../testing/mock-services';
+import { ActivatedRoute } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -12,22 +25,18 @@ describe('HomeComponent', () => {
   let darkModeService: jasmine.SpyObj<DarkModeService>;
 
   beforeEach(async () => {
-    const translateServiceSpy = jasmine.createSpyObj(
-      'TranslateService',
-      ['use'],
-      { currentLang: 'en' }
-    );
-    const darkModeServiceSpy = jasmine.createSpyObj('DarkModeService', [''], {
-      darkMode$: of(false),
-    });
-
     await TestBed.configureTestingModule({
-      imports: [HomeComponent, TranslateModule.forRoot()],
+      imports: [HomeComponent, TranslateModule.forRoot(), FontAwesomeModule],
       providers: [
-        { provide: TranslateService, useValue: translateServiceSpy },
-        { provide: DarkModeService, useValue: darkModeServiceSpy },
+        provideHttpClient(withFetch()),
+        provideRouter([]),
+        { provide: TranslateService, useValue: mockTranslateService },
+        { provide: DarkModeService, useValue: mockDarkModeService },
+        { provide: ArticleService, useValue: mockArticleService },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute },
+        LanguageService,
       ],
-      schemas: [NO_ERRORS_SCHEMA], // This allows us to ignore unknown elements and attributes
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
@@ -46,6 +55,14 @@ describe('HomeComponent', () => {
   });
 
   it('should initialize isDarkMode to false', () => {
+    // Ensure darkModeService.isDarkMode() returns false
+    darkModeService.isDarkMode.and.returnValue(false);
+
+    // Re-create the component to trigger ngOnInit
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
     expect(component.isDarkMode).toBeFalse();
   });
 
@@ -101,9 +118,16 @@ describe('HomeComponent', () => {
   });
 
   it('should render social media links', () => {
-    const compiled = fixture.nativeElement;
-    const socialLinks = compiled.querySelectorAll('.mt-8 .flex.space-x-4 a');
-    expect(socialLinks.length).toBe(3); // LinkedIn, GitHub, and Resume download
+    fixture.detectChanges();
+    const socialLinksContainer = fixture.debugElement.query(
+      By.css('.mt-8.flex.space-x-4')
+    );
+    if (socialLinksContainer) {
+      const socialLinks = socialLinksContainer.queryAll(By.css('fa-icon'));
+      expect(socialLinks.length).toBe(3); // LinkedIn, GitHub, and Resume download
+    } else {
+      fail('Social links container not found');
+    }
   });
 
   it('should render action buttons', () => {

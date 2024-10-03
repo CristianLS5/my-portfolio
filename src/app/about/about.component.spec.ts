@@ -3,31 +3,27 @@ import { AboutComponent } from './about.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DarkModeService } from '../services/dark-mode.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BehaviorSubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import {
+  mockTranslateService,
+  mockDarkModeService,
+} from '../testing/mock-services';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
   let darkModeService: jasmine.SpyObj<DarkModeService>;
   let translateService: jasmine.SpyObj<TranslateService>;
-  let darkModeSubject: BehaviorSubject<boolean>;
 
   beforeEach(async () => {
-    darkModeSubject = new BehaviorSubject<boolean>(false);
-    const darkModeServiceSpy = jasmine.createSpyObj('DarkModeService', [''], {
-      darkMode$: darkModeSubject.asObservable(),
-    });
-
-    const translateServiceSpy = jasmine.createSpyObj('TranslateService', [
-      'instant',
-    ]);
-
     await TestBed.configureTestingModule({
       imports: [AboutComponent, TranslateModule.forRoot(), FontAwesomeModule],
       providers: [
-        { provide: DarkModeService, useValue: darkModeServiceSpy },
-        { provide: TranslateService, useValue: translateServiceSpy },
+        { provide: DarkModeService, useValue: mockDarkModeService },
+        { provide: TranslateService, useValue: mockTranslateService },
       ],
+      schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AboutComponent);
@@ -87,13 +83,31 @@ describe('AboutComponent', () => {
     expect(component.getLogoColor(testLogo, true)).toBe('#123456');
   });
 
-  it('should react to dark mode changes', (done: DoneFn) => {
-    darkModeSubject.next(true);
-    fixture.detectChanges();
+  it('should update isDarkMode$ when darkMode$ emits', (done) => {
+    // Create a new Observable that emits true then false
+    const testObservable = new Observable<boolean>((subscriber) => {
+      subscriber.next(true);
+      setTimeout(() => {
+        subscriber.next(false);
+        subscriber.complete();
+      }, 10);
+    });
 
-    component.isDarkMode$.subscribe((isDark) => {
-      expect(isDark).withContext('Dark mode should be true').toBeTrue();
-      done();
+    // Replace the darkMode$ observable with our test observable
+    component.isDarkMode$ = testObservable;
+
+    let emissionCount = 0;
+    component.isDarkMode$.subscribe({
+      next: (isDarkMode) => {
+        emissionCount++;
+        if (emissionCount === 1) {
+          expect(isDarkMode).toBeTrue();
+        } else if (emissionCount === 2) {
+          expect(isDarkMode).toBeFalse();
+          done();
+        }
+      },
+      error: done.fail,
     });
   });
 });

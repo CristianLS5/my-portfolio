@@ -24,6 +24,7 @@ describe('TypewriterComponent', () => {
 
     fixture = TestBed.createComponent(TestHostComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -31,7 +32,6 @@ describe('TypewriterComponent', () => {
   });
 
   it('should render the typewriter container', () => {
-    fixture.detectChanges();
     const container = fixture.debugElement.query(
       By.css('.typewriter-container')
     );
@@ -39,7 +39,6 @@ describe('TypewriterComponent', () => {
   });
 
   it('should render opening and closing brackets', () => {
-    fixture.detectChanges();
     const typewriterComponent = fixture.debugElement.query(
       By.directive(TypewriterComponent)
     );
@@ -50,47 +49,47 @@ describe('TypewriterComponent', () => {
   });
 
   it('should render ngx-typed-writer element', () => {
-    fixture.detectChanges();
     const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
     expect(typedWriter).toBeTruthy();
   });
 
   it('should pass input strings to ngx-typed-writer', () => {
-    fixture.detectChanges();
-    const typewriterComponent = fixture.debugElement.query(
-      By.directive(TypewriterComponent)
+    const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
+    expect(typedWriter.attributes['ng-reflect-strings']).toBe(
+      component.testStrings.toString()
     );
-    const typedWriter = typewriterComponent.query(By.css('ngx-typed-writer'));
-    expect(typedWriter.properties['strings']).toEqual(component.testStrings);
   });
 
-  it('should set correct typeSpeed on ngx-typed-writer', () => {
-    fixture.detectChanges();
+  it('should set correct attributes on ngx-typed-writer', () => {
     const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
-    expect(typedWriter.properties['typeSpeed']).toBe(50);
+
+    expect(typedWriter.attributes['ng-reflect-strings']).toBe(
+      component.testStrings.toString()
+    );
+    expect(typedWriter.attributes['ng-reflect-type-speed']).toBe('50');
+    expect(typedWriter.attributes['ng-reflect-back-speed']).toBe('30');
+    expect(typedWriter.attributes['ng-reflect-loop']).toBe('true');
+    expect(typedWriter.attributes['ng-reflect-cursor-char']).toBe('|');
+    expect(typedWriter.attributes['ng-reflect-show-cursor']).toBe('true');
   });
 
   it('should set correct backSpeed on ngx-typed-writer', () => {
-    fixture.detectChanges();
     const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
-    expect(typedWriter.properties['backSpeed']).toBe(30);
+    expect(typedWriter.attributes['ng-reflect-back-speed']).toBe('30');
   });
 
   it('should set loop to true on ngx-typed-writer', () => {
-    fixture.detectChanges();
     const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
-    expect(typedWriter.properties['loop']).toBeTrue();
+    expect(typedWriter.attributes['ng-reflect-loop']).toBe('true');
   });
 
   it('should set correct cursorChar on ngx-typed-writer', () => {
-    fixture.detectChanges();
     const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
-    expect(typedWriter.properties['cursorChar']).toBe('|');
+    expect(typedWriter.attributes['ng-reflect-cursor-char']).toBe('|');
   });
 
   it('should set showCursor to true on ngx-typed-writer', () => {
-    fixture.detectChanges();
     const typedWriter = fixture.debugElement.query(By.css('ngx-typed-writer'));
-    expect(typedWriter.properties['showCursor']).toBeTrue();
+    expect(typedWriter.attributes['ng-reflect-show-cursor']).toBe('true');
   });
 });
