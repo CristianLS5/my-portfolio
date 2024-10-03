@@ -4,34 +4,31 @@
         <div class="flex items-center space-x-2 transition-opacity duration-300"
             [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
             <span class="text-xl font-bold text-gray-900 dark:text-white">Cristian López</span>
-            <fa-icon [icon]="faLaptopCode" [size]="'lg'" class=" text-gray-700 dark:text-gray-300"></fa-icon>
+            <fa-icon [icon]="faLaptopCode" [size]="'lg'" class="text-gray-700 dark:text-gray-300"></fa-icon>
             <fa-icon [icon]="faCode" [size]="'lg'" class="text-gray-700 dark:text-gray-300"></fa-icon>
-            <fa-icon [icon]="faAngular" [size]="'xl'" class=" text-gray-700 dark:text-gray-300"></fa-icon>
+            <fa-icon [icon]="faAngular" [size]="'xl'" class="text-gray-700 dark:text-gray-300"></fa-icon>
             <span class="text-xl font-bold text-gray-900 dark:text-white">Developer</span>
         </div>
-        <ul class="flex space-x-4 transition-opacity duration-300"
+        <ul class="flex space-x-4 transition-opacity duration-300 items-center"
             [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
             <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
                     class="header-link">{{ 'HEADER.HOME' | translate }}</a></li>
             <li><a (click)="scrollToSection('about')" class="header-link cursor-pointer">{{ 'HEADER.ABOUT' | translate
-                    }}</a>
-            </li>
+                    }}</a></li>
             <li><a (click)="scrollToSection('projects')" class="header-link cursor-pointer">{{ 'HEADER.PROJECTS' |
-                    translate }}</a>
-            </li>
-            <li>
-                <a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.NEWS' |
-                    translate }}</a>
-            </li>
+                    translate }}</a></li>
+            <li><a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.NEWS' | translate
+                    }}</a></li>
             <li><a (click)="scrollToSection('contact')" class="header-link cursor-pointer">{{ 'HEADER.CONTACT' |
-                    translate }}</a>
-            </li>
-            <li>
-                <a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.RESUME' |
-                    translate }}</a>
-            </li>
+                    translate }}</a></li>
+            <li><a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.RESUME' |
+                    translate }}</a></li>
         </ul>
-        <div class="flex items-center space-x-2">
+        <div class="flex items-center space-x-4">
+            <a [href]="getResumeUrl()" download class="header-link flex items-center space-x-1">
+                <span>{{ 'HEADER.DOWNLOAD_RESUME' | translate }}</span>
+                <fa-icon [icon]="faFileDownload"></fa-icon>
+            </a>
             <!-- Language toggle button -->
             <button (click)="toggleLanguage()"
                 class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">

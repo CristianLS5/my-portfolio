@@ -12,7 +12,8 @@ import { DarkModeService } from '../services/dark-mode.service';
 import { Subscription } from 'rxjs';
 import { ContactComponent } from '../contact/contact.component';
 import { AboutComponent } from '../about/about.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +38,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   isDarkMode = false;
   private darkModeSubscription: Subscription | undefined;
 
-  constructor(private darkModeService: DarkModeService) {}
+  constructor(
+    private darkModeService: DarkModeService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.darkModeSubscription = this.darkModeService.darkMode$.subscribe(
@@ -51,12 +55,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.darkModeSubscription?.unsubscribe();
   }
 
+  getResumeUrl(): string {
+    return this.translate.currentLang === 'en'
+      ? 'assets/files/Cristian_Lopez_Resume.pdf'
+      : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
+
   technologies = [
     'a Software Developer',
     'a Front-end Specialist',
     'an Angular Enthusiastic',
     'Ironman',
   ];
+
   faLinkedin = faLinkedin;
   faGithub = faGithub;
+  faFileDownload = faFileDownload;
 }

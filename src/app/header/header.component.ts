@@ -15,7 +15,11 @@ import {
   RouterModule,
 } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faLaptopCode, faCode } from '@fortawesome/free-solid-svg-icons';
+import {
+  faLaptopCode,
+  faCode,
+  faFileDownload,
+} from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { DarkModeService } from '../services/dark-mode.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -54,9 +58,16 @@ export class HeaderComponent {
     return this.darkModeService.isDarkMode();
   }
 
+  getResumeUrl(): string {
+    return this.translateService.currentLang === 'en'
+      ? 'assets/files/Cristian_Lopez_Resume.pdf'
+      : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
+
   faLaptopCode = faCode; // Icon for software
   faCode = faLaptopCode; // Icon for frontend
   faAngular = faAngular; // Icon for Angular
+  faFileDownload = faFileDownload;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

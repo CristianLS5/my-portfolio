@@ -4,9 +4,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faGithub,
   faLinkedin,
-  faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -19,5 +19,13 @@ export class FooterComponent {
   currentYear = new Date().getFullYear();
   faGithub = faGithub;
   faLinkedin = faLinkedin;
-  faTwitter = faTwitter;
+  faFileDownload = faFileDownload;
+
+  constructor(private translate: TranslateService) {}
+
+  getResumeUrl(): string {
+    return this.translate.currentLang === 'en'
+      ? 'assets/files/Cristian_Lopez_Resume.pdf'
+      : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
 }
