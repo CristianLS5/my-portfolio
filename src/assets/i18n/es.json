@@ -28,7 +28,7 @@
   },
   "ABOUT": {
     "TITLE": "Sobre Mí",
-    "DESCRIPTION": "Experiencia trabajando con equipos para producir sitios web impactantes y de vanguardia que involucran a los clientes y ofrecen resultados comerciales. Bien versado en estándares de diseño y preferencias de usuario. Posee conocimientos de Angular con capacidad para aprender rápidamente nuevas tecnologías. Éxito demostrado en identificar y resolver problemas de código."
+    "DESCRIPTION": "Experiencia trabajando con equipos para producir sitios web impactantes y de vanguardia que involucran a los clientes y ofrecen resultados comerciales. Bien versado en estándares de diseño y preferencias de usuario. Poseo conocimientos de Angular con capacidad para aprender rápidamente nuevas tecnologías. Éxito demostrado en identificar y resolver problemas de código."
   },
   "PROJECTS": {
     "TITLE": "Proyectos",
@@ -44,7 +44,7 @@
       "TITLE": "Proyecto React",
       "DESCRIPTION": "Un proyecto de ejemplo en React"
     },
-    "PROJECT34": {
+    "PROJECT4": {
       "TITLE": "Proyecto Angular",
       "DESCRIPTION": "Un proyecto de ejemplo en Angular"
     }
