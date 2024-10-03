@@ -4,11 +4,12 @@ import { Project } from '../models/project.interface';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../services/language.service';
 import { Subscription } from 'rxjs';
+import { RouterModule } from '@angular/router'; // Add this import
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, TranslateModule],
+  imports: [CommonModule, NgOptimizedImage, TranslateModule, RouterModule], // Add RouterModule
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css',
 })
@@ -47,6 +48,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT1.DESCRIPTION',
           backgroundImage: 'assets/images/my-portfolio-intro.png',
           tags: ['Angular', 'Node.js', 'Tailwind CSS'],
+          url: 'https://cristianlopez.netlify.app/', // Real URL for your portfolio
         },
         {
           id: 2,
@@ -54,6 +56,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT2.DESCRIPTION',
           backgroundImage: 'assets/images/react.png',
           tags: ['React', 'JavaScript', 'Redux'],
+          url: 'https://example.com/project2', // Fake URL for testing
         },
         {
           id: 3,
@@ -61,6 +64,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT3.DESCRIPTION',
           backgroundImage: 'assets/images/react.png',
           tags: ['React', 'JavaScript', 'Redux'],
+          url: 'https://example.com/project3', // Fake URL for testing
         },
         {
           id: 4,
@@ -68,6 +72,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT4.DESCRIPTION',
           backgroundImage: 'assets/images/angular.png',
           tags: ['Angular', 'TypeScript', 'RxJS'],
+          url: 'https://example.com/project4', // Fake URL for testing
         },
       ]);
       this.isLoading.set(false);

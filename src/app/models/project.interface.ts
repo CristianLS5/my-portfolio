@@ -4,4 +4,5 @@ export interface Project {
   description: string;
   backgroundImage: string;
   tags: string[];
+  url: string;
 }
