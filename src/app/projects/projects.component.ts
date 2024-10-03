@@ -14,6 +14,7 @@ import { Subscription } from 'rxjs';
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   projects = signal<Project[]>([]);
+  isLoading = signal(true);
   private langChangeSubscription: Subscription | undefined;
 
   constructor(
@@ -25,6 +26,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.loadProjects();
     this.langChangeSubscription = this.languageService.currentLang$.subscribe(
       () => {
+        this.isLoading.set(true);
         this.loadProjects();
       }
     );
@@ -37,35 +39,38 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   }
 
   loadProjects() {
-    this.projects.set([
-      {
-        id: 1,
-        title: this.translate.instant('PROJECTS.PROJECT1.TITLE'),
-        description: this.translate.instant('PROJECTS.PROJECT1.DESCRIPTION'),
-        backgroundImage: 'assets/images/my-portfolio-intro.png',
-        tags: ['Angular', 'Node.js', 'Tailwind CSS'],
-      },
-      {
-        id: 2,
-        title: this.translate.instant('PROJECTS.PROJECT2.TITLE'),
-        description: this.translate.instant('PROJECTS.PROJECT2.DESCRIPTION'),
-        backgroundImage: 'assets/images/react.png',
-        tags: ['React', 'JavaScript', 'Redux'],
-      },
-      {
-        id: 3,
-        title: this.translate.instant('PROJECTS.PROJECT3.TITLE'),
-        description: this.translate.instant('PROJECTS.PROJECT3.DESCRIPTION'),
-        backgroundImage: 'assets/images/react.png',
-        tags: ['React', 'JavaScript', 'Redux'],
-      },
-      {
-        id: 4,
-        title: this.translate.instant('PROJECTS.PROJECT4.TITLE'),
-        description: this.translate.instant('PROJECTS.PROJECT4.DESCRIPTION'),
-        backgroundImage: 'assets/images/angular.png',
-        tags: ['Angular', 'TypeScript', 'RxJS'],
-      },
-    ]);
+    this.translate.get('PROJECTS').subscribe(() => {
+      this.projects.set([
+        {
+          id: 1,
+          title: 'PROJECTS.PROJECT1.TITLE',
+          description: 'PROJECTS.PROJECT1.DESCRIPTION',
+          backgroundImage: 'assets/images/my-portfolio-intro.png',
+          tags: ['Angular', 'Node.js', 'Tailwind CSS'],
+        },
+        {
+          id: 2,
+          title: 'PROJECTS.PROJECT2.TITLE',
+          description: 'PROJECTS.PROJECT2.DESCRIPTION',
+          backgroundImage: 'assets/images/react.png',
+          tags: ['React', 'JavaScript', 'Redux'],
+        },
+        {
+          id: 3,
+          title: 'PROJECTS.PROJECT3.TITLE',
+          description: 'PROJECTS.PROJECT3.DESCRIPTION',
+          backgroundImage: 'assets/images/react.png',
+          tags: ['React', 'JavaScript', 'Redux'],
+        },
+        {
+          id: 4,
+          title: 'PROJECTS.PROJECT4.TITLE',
+          description: 'PROJECTS.PROJECT4.DESCRIPTION',
+          backgroundImage: 'assets/images/angular.png',
+          tags: ['Angular', 'TypeScript', 'RxJS'],
+        },
+      ]);
+      this.isLoading.set(false);
+    });
   }
 }

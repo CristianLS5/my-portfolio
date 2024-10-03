@@ -2,7 +2,7 @@
     [ngClass]="isDarkMode ? 'bg-gradient-to-b from-gray-900 to-blue-900' : 'bg-gradient-to-b from-sky-300 to-sky-100'">
     <!-- Stars (only visible in dark mode) -->
     @if (isDarkMode) {
-    @for (star of stars(); track star.x + '-' + star.y) {
+    @for (star of stars(); track $index) {
     <div class="star" [style.left.px]="star.x" [style.top.px]="star.y" [style.width.px]="star.size"
         [style.height.px]="star.size">
     </div>
@@ -10,7 +10,7 @@
     }
 
     <!-- Clouds (less visible in dark mode) -->
-    @for (cloud of clouds(); track cloud.x + '-' + cloud.y) {
+    @for (cloud of clouds(); track $index) {
     <div class="absolute rounded-full transition-opacity duration-500"
         [ngClass]="isDarkMode ? 'bg-gray-700 opacity-30' : 'bg-white opacity-80'" [style.left.px]="cloud.x"
         [style.top.px]="cloud.y" [style.width.px]="cloud.size" [style.height.px]="cloud.size * 0.6">
@@ -26,7 +26,7 @@
     }
 
     <!-- Birds (less visible in dark mode) -->
-    @for (bird of birds(); track bird.x + '-' + bird.y) {
+    @for (bird of birds(); track $index) {
     <div class="absolute text-2xl transition-opacity duration-500" [ngClass]="isDarkMode ? 'opacity-30' : 'opacity-100'"
         [style.left.px]="bird.x" [style.top.px]="bird.y">
         🐦
@@ -49,7 +49,7 @@
     </div>
 
     <!-- Obstacles -->
-    @for (obstacle of obstacles(); track obstacle.position) {
+    @for (obstacle of obstacles(); track $index) {
     <div class="absolute bottom-24 w-16 h-16 flex items-center justify-center text-4xl z-5"
         [style.left.px]="obstacle.position">
         {{ obstacle.emoji }}
