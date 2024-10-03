@@ -15,10 +15,15 @@ import {
   RouterModule,
 } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faLaptopCode, faCode } from '@fortawesome/free-solid-svg-icons';
+import {
+  faLaptopCode,
+  faCode,
+  faFileDownload,
+} from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { DarkModeService } from '../services/dark-mode.service';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -37,20 +42,32 @@ import { TranslateModule } from '@ngx-translate/core';
 export class HeaderComponent {
   @Output() toggleDarkMode = new EventEmitter<void>();
   showHeaderContent = signal(false);
+  currentLang: string;
 
   constructor(
     private el: ElementRef,
     public darkModeService: DarkModeService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private translateService: TranslateService,
+    private languageService: LanguageService
+  ) {
+    this.currentLang = this.translateService.currentLang;
+  }
 
   get isDarkMode() {
     return this.darkModeService.isDarkMode();
   }
 
+  getResumeUrl(): string {
+    return this.translateService.currentLang === 'en'
+      ? 'assets/files/Cristian_Lopez_Resume.pdf'
+      : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
+
   faLaptopCode = faCode; // Icon for software
   faCode = faLaptopCode; // Icon for frontend
   faAngular = faAngular; // Icon for Angular
+  faFileDownload = faFileDownload;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -70,5 +87,10 @@ export class HeaderComponent {
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
+  }
+
+  toggleLanguage() {
+    this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
+    this.languageService.setLanguage(this.currentLang);
   }
 }

@@ -26,6 +26,11 @@
                             class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
                             <fa-icon [icon]="faGithub" size="2x"></fa-icon>
                         </a>
+                        <a [href]="getResumeUrl()" download [title]="'HOME.BUTTON.DOWNLOAD_RESUME' | translate"
+                            attr.aria-label="{{ 'HOME.DOWNLOAD_RESUME_ARIA' | translate }}"
+                            class="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors duration-300">
+                            <fa-icon [icon]="faFileDownload" size="2x"></fa-icon>
+                        </a>
                     </div>
                     <div class="mt-8">
                         <a href="#projects"
