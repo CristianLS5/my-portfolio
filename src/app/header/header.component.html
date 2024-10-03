@@ -3,13 +3,15 @@
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-2 transition-opacity duration-300"
             [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
-            <span class="text-xl font-bold text-gray-900 dark:text-white">Cristian López</span>
+            <span class="text-xl font-bold text-gray-900 dark:text-white hidden md:inline">Cristian López</span>
             <fa-icon [icon]="faLaptopCode" [size]="'lg'" class="text-gray-700 dark:text-gray-300"></fa-icon>
             <fa-icon [icon]="faCode" [size]="'lg'" class="text-gray-700 dark:text-gray-300"></fa-icon>
             <fa-icon [icon]="faAngular" [size]="'xl'" class="text-gray-700 dark:text-gray-300"></fa-icon>
             <span class="text-xl font-bold text-gray-900 dark:text-white">Developer</span>
         </div>
-        <ul class="flex space-x-4 transition-opacity duration-300 items-center"
+
+        <!-- Desktop menu -->
+        <ul class="hidden md:flex space-x-4 transition-opacity duration-300 items-center"
             [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
             <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
                     class="header-link">{{ 'HEADER.HOME' | translate }}</a></li>
@@ -24,10 +26,27 @@
             <li><a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.RESUME' |
                     translate }}</a></li>
         </ul>
+
+        <!-- Mobile menu -->
+        <ul class="md:hidden flex space-x-4 transition-opacity duration-300 items-center"
+            [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
+            <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
+                    class="header-link">{{ 'HEADER.HOME' | translate }}</a></li>
+            <li><a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.NEWS' | translate
+                    }}</a></li>
+            <li><a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.RESUME' |
+                    translate }}</a></li>
+        </ul>
+
         <div class="flex items-center space-x-4">
-            <a [href]="getResumeUrl()" download class="header-link flex items-center space-x-1">
+            <!-- Desktop: Download resume text + icon -->
+            <a [href]="getResumeUrl()" download class="hidden md:flex header-link items-center space-x-1">
                 <span>{{ 'HEADER.DOWNLOAD_RESUME' | translate }}</span>
                 <fa-icon [icon]="faFileDownload"></fa-icon>
+            </a>
+            <!-- Mobile: Download resume icon only (larger) -->
+            <a [href]="getResumeUrl()" download class="md:hidden header-link">
+                <fa-icon [icon]="faFileDownload" [size]="'lg'"></fa-icon>
             </a>
             <!-- Language toggle button -->
             <button (click)="toggleLanguage()"

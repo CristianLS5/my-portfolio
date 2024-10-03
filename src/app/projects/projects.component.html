@@ -5,7 +5,7 @@
     } @else {
     <div class="projects grid grid-cols-1 md:grid-cols-2 gap-8">
         @for (project of projects(); track project.id) {
-        <div class="projects__item group">
+        <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="projects__item group">
             <div class="project" [style.backgroundImage]="'url(' + project.backgroundImage + ')'"
                 [attr.data-first-tag]="project.tags[0]">
                 <div class="project__content">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
         }
     </div>
     }

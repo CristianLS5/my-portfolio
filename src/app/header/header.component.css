@@ -16,3 +16,9 @@
   @apply transform scale-x-100 origin-bottom-left;
   box-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6;
 }
+
+@media (max-width: 767px) {
+  .header-link {
+    @apply text-sm;
+  }
+}
