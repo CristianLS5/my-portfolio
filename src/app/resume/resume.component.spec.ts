@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ResumeComponent } from './resume.component';
+import { TranslateModule } from '@ngx-translate/core';
+import { By } from '@angular/platform-browser';
 
 describe('ResumeComponent', () => {
   let component: ResumeComponent;
@@ -8,9 +9,8 @@ describe('ResumeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResumeComponent]
-    })
-    .compileComponents();
+      imports: [ResumeComponent, TranslateModule.forRoot()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ResumeComponent);
     component = fixture.componentInstance;
@@ -19,5 +19,83 @@ describe('ResumeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should initialize experiences', () => {
+    expect(component.experiences().length).toBeGreaterThan(0);
+  });
+
+  it('should return correct year from date string', () => {
+    expect(component.getYear('January 2024')).toBe('2024');
+    expect(component.getYear('2024')).toBe('2024');
+  });
+
+  it('should render correct number of experience cards', () => {
+    const cards = fixture.debugElement.queryAll(By.css('.experience-card'));
+    expect(cards.length).toBe(component.experiences().length);
+  });
+
+  it('should render experience details correctly', () => {
+    const firstExperience = component.experiences()[0];
+    const firstCard = fixture.debugElement.query(By.css('.experience-card'));
+
+    expect(firstCard.query(By.css('h3')).nativeElement.textContent).toContain(
+      firstExperience.role
+    );
+    expect(firstCard.query(By.css('h4')).nativeElement.textContent).toContain(
+      firstExperience.company
+    );
+    expect(
+      firstCard.query(By.css('p.text-sm')).nativeElement.textContent
+    ).toContain(firstExperience.startDate);
+    expect(
+      firstCard.query(By.css('p.text-sm')).nativeElement.textContent
+    ).toContain(firstExperience.endDate);
+  });
+
+  it('should render correct number of tasks for each experience', () => {
+    const cards = fixture.debugElement.queryAll(By.css('.experience-card'));
+    cards.forEach((card, index) => {
+      const tasks = card.queryAll(By.css('li'));
+      expect(tasks.length).toBe(component.experiences()[index].tasks.length);
+    });
+  });
+
+  it('should alternate card alignment', () => {
+    const cards = fixture.debugElement.queryAll(By.css('.experience-card'));
+    cards.forEach((card, index) => {
+      if (index % 2 === 0) {
+        expect(card.classes['flex-row-reverse']).toBeFalsy();
+      } else {
+        expect(card.classes['flex-row-reverse']).toBeTruthy();
+      }
+    });
+  });
+
+  it('should call observeExperienceCards after view init', () => {
+    spyOn<any>(component, 'observeExperienceCards');
+    component.ngAfterViewInit();
+    expect(component['observeExperienceCards']).toHaveBeenCalled();
+  });
+
+  it('should use IntersectionObserver to add show class', (done) => {
+    const mockIntersectionObserver = jasmine.createSpy('IntersectionObserver');
+    (global as any).IntersectionObserver = mockIntersectionObserver;
+
+    component.ngAfterViewInit();
+
+    expect(mockIntersectionObserver).toHaveBeenCalled();
+
+    const observerCallback = mockIntersectionObserver.calls.argsFor(0)[0];
+    const mockEntry = {
+      isIntersecting: true,
+      target: document.createElement('div'),
+    };
+    observerCallback([mockEntry]);
+
+    setTimeout(() => {
+      expect(mockEntry.target.classList.contains('show')).toBeTruthy();
+      done();
+    }, 150);
   });
 });
