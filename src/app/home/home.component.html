@@ -17,8 +17,7 @@
                         {{ 'HOME.DESCRIPTION' | translate}}
                     </p>
                     <div class="mt-8 flex space-x-4">
-                        <a href="https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US"
-                            target="_blank" rel="noopener noreferrer"
+                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer"
                             class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
                             <fa-icon [icon]="faLinkedin" size="2x"></fa-icon>
                         </a>
@@ -27,7 +26,6 @@
                             <fa-icon [icon]="faGithub" size="2x"></fa-icon>
                         </a>
                         <a [href]="getResumeUrl()" download [title]="'HOME.BUTTON.DOWNLOAD_RESUME' | translate"
-                            attr.aria-label="{{ 'HOME.DOWNLOAD_RESUME_ARIA' | translate }}"
                             class="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors duration-300">
                             <fa-icon [icon]="faFileDownload" size="2x"></fa-icon>
                         </a>

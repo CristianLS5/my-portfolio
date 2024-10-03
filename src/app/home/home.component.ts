@@ -44,6 +44,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    this.isDarkMode = this.darkModeService.isDarkMode();
+
     this.darkModeSubscription = this.darkModeService.darkMode$.subscribe(
       (isDark) => {
         this.isDarkMode = isDark;
@@ -59,6 +61,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     return this.translate.currentLang === 'en'
       ? 'assets/files/Cristian_Lopez_Resume.pdf'
       : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
+
+  getLinkedInUrl(): string {
+    return this.translate.currentLang === 'es'
+      ? 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/'
+      : 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US';
   }
 
   technologies = [

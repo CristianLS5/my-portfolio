@@ -1,5 +1,5 @@
 export interface Article {
-  id: string;
+  id: number;
   title: string;
   releaseType: string;
   publishedAt: Date;

@@ -2,6 +2,7 @@
     <div class="flex items-center mb-8">
         <h2 class="text-4xl font-bold text-left mr-4 text-gray-900 dark:text-white">{{ 'NEWS.TITLE_ARTICLES' | translate
             }}</h2>
+        @if (showMoreButton) {
         <a routerLink="/news"
             class="glow-button bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300 flex items-center">
             {{ 'NEWS.BUTTON.MORE' | translate }}
@@ -11,6 +12,7 @@
                     clip-rule="evenodd" />
             </svg>
         </a>
+        }
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         @for (article of displayedArticles(); track article.id) {
