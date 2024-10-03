@@ -3,11 +3,12 @@ import { MarioComponent } from '../mario/mario.component';
 import { CommonModule } from '@angular/common';
 import { DarkModeService } from '../services/dark-mode.service';
 import { Subscription } from 'rxjs';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-intro',
   standalone: true,
-  imports: [MarioComponent, CommonModule],
+  imports: [MarioComponent, CommonModule, TranslateModule],
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.css',
 })

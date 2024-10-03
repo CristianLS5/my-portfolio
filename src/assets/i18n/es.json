@@ -10,6 +10,10 @@
   "FOOTER": {
     "RIGHTS": "Todos los derechos reservados"
   },
+  "INTRO": {
+    "TITLE": "Hola, Soy Cristian López Solá",
+    "DESCRIPTION": "Desarrollador de Software | Especializado en Frontend | Apasionado de Angular"
+  },
   "HOME": {
     "GREETING": "Hola, soy Cristian",
     "WELCOME": "Bienvenido a mi portafolio",
@@ -56,7 +60,7 @@
     "PLACEHOLDER": {
       "NAME": "Tu Nombre",
       "EMAIL": "Tu Correo Electrónico",
-      "SUBJECT": "Asunto",
+      "SUBJECT": "Tu Asunto",
       "MESSAGE": "Tu Mensaje"
     },
     "ERROR": {

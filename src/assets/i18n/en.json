@@ -10,6 +10,10 @@
   "FOOTER": {
     "RIGHTS": "All rights reserved"
   },
+  "INTRO": {
+    "TITLE": "Hello, I'm Cristian López Solá",
+    "DESCRIPTION": "Software Developer | Frontend Specialist | Angular Enthusiast"
+  },
   "HOME": {
     "GREETING": "Hello, I'm Cristian",
     "WELCOME": "Welcome to my portfolio",

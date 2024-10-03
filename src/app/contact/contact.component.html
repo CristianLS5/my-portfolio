@@ -5,7 +5,7 @@
             <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
                 <fa-icon [icon]="faUser"></fa-icon>
             </div>
-            <input type="text" formControlName="name" placeholder="Your Name"
+            <input type="text" formControlName="name" placeholder="{{ 'CONTACT.PLACEHOLDER.NAME' | translate }}"
                 class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
             @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
             <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.NAME' | translate }}e</p>
@@ -16,7 +16,7 @@
             <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
                 <fa-icon [icon]="faEnvelope"></fa-icon>
             </div>
-            <input type="email" formControlName="email" placeholder="Your Email"
+            <input type="email" formControlName="email" placeholder="{{ 'CONTACT.PLACEHOLDER.EMAIL' | translate }}"
                 class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
             @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
             <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.EMAIL' | translate }}</p>
@@ -27,7 +27,7 @@
             <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
                 <fa-icon [icon]="faSubject"></fa-icon>
             </div>
-            <input type="text" formControlName="subject" placeholder="Subject"
+            <input type="text" formControlName="subject" placeholder="{{ 'CONTACT.PLACEHOLDER.SUBJECT' | translate }}"
                 class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
             @if (contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched) {
             <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.SUBJECT' | translate }}</p>
@@ -38,7 +38,7 @@
             <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
                 <fa-icon [icon]="faMessage"></fa-icon>
             </div>
-            <textarea formControlName="message" placeholder="Your Message" rows="4"
+            <textarea formControlName="message" placeholder="{{ 'CONTACT.PLACEHOLDER.MESSAGE' | translate }}" rows="4"
                 class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
             @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
             <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.MESSAGE' | translate }}</p>
