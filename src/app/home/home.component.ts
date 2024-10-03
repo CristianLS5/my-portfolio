@@ -61,6 +61,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       : 'assets/files/Cristian_Lopez_CV.pdf';
   }
 
+  getLinkedInUrl(): string {
+    return this.translate.currentLang === 'es'
+      ? 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/'
+      : 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US';
+  }
+
   technologies = [
     'a Software Developer',
     'a Front-end Specialist',

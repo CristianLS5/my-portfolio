@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faGithub,
-  faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
 
@@ -27,5 +24,11 @@ export class FooterComponent {
     return this.translate.currentLang === 'en'
       ? 'assets/files/Cristian_Lopez_Resume.pdf'
       : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
+
+  getLinkedInUrl(): string {
+    return this.translate.currentLang === 'es'
+      ? 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/'
+      : 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US';
   }
 }
