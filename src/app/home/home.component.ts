@@ -5,7 +5,11 @@ import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { ArticlesComponent } from '../articles/articles.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import {
+  faLinkedin,
+  faGithub,
+  faAngular,
+} from '@fortawesome/free-brands-svg-icons';
 import { TypewriterComponent } from '../typewriter/typewriter.component';
 import { NgOptimizedImage } from '@angular/common';
 import { DarkModeService } from '../services/dark-mode.service';
@@ -13,7 +17,11 @@ import { Subscription } from 'rxjs';
 import { ContactComponent } from '../contact/contact.component';
 import { AboutComponent } from '../about/about.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCode,
+  faFileDownload,
+  faLaptopCode,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +43,10 @@ import { faFileDownload } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  faLinkedin = faLinkedin;
+  faGithub = faGithub;
+  faFileDownload = faFileDownload;
+
   isDarkMode = false;
   private darkModeSubscription: Subscription | undefined;
 
@@ -70,13 +82,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   technologies = [
-    'a Software Developer',
-    'a Front-end Specialist',
-    'an Angular Enthusiastic',
-    'Ironman',
+    {
+      text: 'a Software Developer',
+      shortText: 'a Software Dev',
+    },
+    {
+      text: 'a Front-end Specialist',
+      shortText: 'a Front-end Dev',
+    },
+    {
+      text: 'an Angular Enthusiast',
+      shortText: 'an Angular Dev',
+    },
+    {
+      text: 'Ironman',
+      shortText: 'Ironman',
+    },
   ];
-
-  faLinkedin = faLinkedin;
-  faGithub = faGithub;
-  faFileDownload = faFileDownload;
 }

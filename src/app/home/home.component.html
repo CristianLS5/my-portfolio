@@ -7,11 +7,8 @@
                 <div class="md:w-1/2 md:pr-8">
                     <h1 class="text-4xl font-bold mb-4">{{ 'HOME.GREETING' | translate }}</h1>
                     <p class="text-xl mb-8">{{ 'HOME.WELCOME' | translate }}</p>
-                    <p class="text-lg">
-                        I'm
-                        <span>
-                            <app-typewriter [strings]="technologies"></app-typewriter>
-                        </span>
+                    <p class="text-lg whitespace-nowrap">
+                        I'm <app-typewriter [strings]="technologies" class="inline-block"></app-typewriter>
                     </p>
                     <p class="text-lg mt-2">
                         {{ 'HOME.DESCRIPTION' | translate}}
