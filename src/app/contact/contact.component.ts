@@ -2,15 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClient } from '@angular/common/http';
 import {
   faUser,
   faEnvelope,
   faHeading,
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
-import { environment } from '../../environments/environment';
 import { TranslateModule } from '@ngx-translate/core';
+import { EmailService } from '../services/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -37,7 +36,7 @@ export class ContactComponent {
   submitSuccess = false;
   submitError = false;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+  constructor(private fb: FormBuilder, private emailService: EmailService) {
     this.contactForm = this.fb.nonNullable.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -54,21 +53,19 @@ export class ContactComponent {
 
       const formData = this.contactForm.value;
 
-      this.http
-        .post(`${environment.apiUrl}/api/send-email`, formData)
-        .subscribe({
-          next: (response) => {
-            console.log('Email sent successfully', response);
-            this.submitting = false;
-            this.submitSuccess = true;
-            this.contactForm.reset();
-          },
-          error: (error) => {
-            console.error('Error sending email', error);
-            this.submitting = false;
-            this.submitError = true;
-          },
-        });
+      this.emailService.sendEmail(formData).subscribe({
+        next: (response) => {
+          console.log('Email sent successfully', response);
+          this.submitting = false;
+          this.submitSuccess = true;
+          this.contactForm.reset();
+        },
+        error: (error) => {
+          console.error('Error sending email', error);
+          this.submitting = false;
+          this.submitError = true;
+        },
+      });
     }
   }
 }
