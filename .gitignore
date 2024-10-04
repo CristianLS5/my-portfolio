@@ -141,3 +141,6 @@ dist
 # Cypress
 cypress/videos
 cypress/screenshots
+
+# Allow Netlify function JavaScript files
+!netlify/functions/*.js
