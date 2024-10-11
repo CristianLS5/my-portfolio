@@ -103,3 +103,11 @@
 .project__tag[data-tag="Redux"] {
   @apply bg-purple-900 text-purple-200;
 }
+
+.project__tag[data-tag="Netlify"] {
+  @apply bg-[#008D82] text-[#7FFFD4];
+}
+
+.project__tag[data-tag="CSS3"] {
+  @apply bg-[#1572B6] text-[#99D0FF];
+}

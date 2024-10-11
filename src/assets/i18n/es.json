@@ -6,11 +6,11 @@
     "NEWS": "Novedades",
     "CONTACT": "Contacto",
     "RESUME": "Currículum",
-    "DOWNLOAD_RESUME": "Descargar Currículum"
+    "DOWNLOAD_RESUME": "Descargar CV"
   },
   "FOOTER": {
     "RIGHTS": "Todos los derechos reservados",
-    "DOWNLOAD_RESUME": "Descargar CV"
+    "DOWNLOAD_RESUME": "Descargar Currículum"
   },
   "INTRO": {
     "TITLE": "Hola, Soy Cristian López Solá",
@@ -37,8 +37,8 @@
       "DESCRIPTION": "Sitio web personal que muestra mis proyectos y habilidades"
     },
     "PROJECT2": {
-      "TITLE": "Proyecto React",
-      "DESCRIPTION": "Un proyecto de ejemplo en React"
+      "TITLE": "CSS Scroll Animation",
+      "DESCRIPTION": "Muestra de técnicas de animación en CSS"
     },
     "PROJECT3": {
       "TITLE": "Proyecto React",
