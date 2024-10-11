@@ -55,7 +55,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           title: 'PROJECTS.PROJECT2.TITLE',
           description: 'PROJECTS.PROJECT2.DESCRIPTION',
           backgroundImage: 'assets/images/css-features-project.png',
-          tags: ['Angular', 'CSS3', 'Redux'],
+          tags: ['Angular', 'SCSS', 'Redux'],
           url: 'https://example.com/project2',
         },
         {

@@ -111,3 +111,7 @@
 .project__tag[data-tag="CSS3"] {
   @apply bg-[#1572B6] text-[#99D0FF];
 }
+
+.project__tag[data-tag="SCSS"] {
+  @apply bg-[#CD6799] text-[#FFD1E8];
+}
