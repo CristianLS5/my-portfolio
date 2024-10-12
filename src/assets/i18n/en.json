@@ -37,14 +37,14 @@
       "DESCRIPTION": "Personal website showcasing my projects and skills"
     },
     "PROJECT2": {
-      "TITLE": "React Project",
-      "DESCRIPTION": "A sample React project"
+      "TITLE": "CSS Scroll Animation",
+      "DESCRIPTION": "Modern CSS and animation techniques showcase"
     },
     "PROJECT3": {
       "TITLE": "React Project",
       "DESCRIPTION": "A sample React project"
     },
-    "PROJECT34": {
+    "PROJECT4": {
       "TITLE": "Angular Project",
       "DESCRIPTION": "A sample Angular project"
     }

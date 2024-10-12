@@ -47,16 +47,16 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           title: 'PROJECTS.PROJECT1.TITLE',
           description: 'PROJECTS.PROJECT1.DESCRIPTION',
           backgroundImage: 'assets/images/my-portfolio-intro.png',
-          tags: ['Angular', 'Node.js', 'Tailwind CSS'],
-          url: 'https://cristianlopez.netlify.app/', // Real URL for your portfolio
+          tags: ['Angular', 'Tailwind CSS', 'Netlify'],
+          url: 'https://cristianlopez.netlify.app/',
         },
         {
           id: 2,
           title: 'PROJECTS.PROJECT2.TITLE',
           description: 'PROJECTS.PROJECT2.DESCRIPTION',
-          backgroundImage: 'assets/images/react.png',
-          tags: ['React', 'JavaScript', 'Redux'],
-          url: 'https://example.com/project2', // Fake URL for testing
+          backgroundImage: 'assets/images/css-features-project.png',
+          tags: ['Angular', 'SCSS', 'Redux'],
+          url: 'https://css-features-cristianls5.vercel.app/',
         },
         {
           id: 3,
@@ -64,7 +64,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT3.DESCRIPTION',
           backgroundImage: 'assets/images/react.png',
           tags: ['React', 'JavaScript', 'Redux'],
-          url: 'https://example.com/project3', // Fake URL for testing
+          url: 'https://example.com/project3',
         },
         {
           id: 4,
@@ -72,7 +72,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT4.DESCRIPTION',
           backgroundImage: 'assets/images/angular.png',
           tags: ['Angular', 'TypeScript', 'RxJS'],
-          url: 'https://example.com/project4', // Fake URL for testing
+          url: 'https://example.com/project4',
         },
       ]);
       this.isLoading.set(false);
