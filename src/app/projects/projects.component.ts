@@ -56,7 +56,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           description: 'PROJECTS.PROJECT2.DESCRIPTION',
           backgroundImage: 'assets/images/css-features-project.png',
           tags: ['Angular', 'SCSS', 'Redux'],
-          url: 'https://example.com/project2',
+          url: 'https://css-features-cristianls5.vercel.app/',
         },
         {
           id: 3,
