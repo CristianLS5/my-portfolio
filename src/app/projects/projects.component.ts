@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router'; // Add this import
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, TranslateModule, RouterModule], // Add RouterModule
+  imports: [CommonModule, TranslateModule, RouterModule], // Add RouterModule
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css',
 })
@@ -55,16 +55,17 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           title: 'PROJECTS.PROJECT2.TITLE',
           description: 'PROJECTS.PROJECT2.DESCRIPTION',
           backgroundImage: 'assets/images/css-features-project.png',
-          tags: ['Angular', 'SCSS', 'Redux'],
+          tags: ['Angular', 'SCSS', 'Vercel'],
           url: 'https://css-features-cristianls5.vercel.app/',
         },
         {
           id: 3,
-          title: 'PROJECTS.PROJECT3.TITLE',
-          description: 'PROJECTS.PROJECT3.DESCRIPTION',
-          backgroundImage: 'assets/images/react.png',
-          tags: ['React', 'JavaScript', 'Redux'],
-          url: 'https://example.com/project3',
+          title: 'Battle.net OAuth2 Demo',
+          description:
+            "A full-stack authentication system using Battle.net's OAuth2 API with cookie consent management",
+          backgroundImage: 'assets/images/wow-api-authentication.png',
+          tags: ['JavaScript', 'Express', 'Vercel'],
+          url: 'https://wow-api-authentication.vercel.app/',
         },
         {
           id: 4,

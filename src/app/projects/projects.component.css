@@ -115,3 +115,11 @@
 .project__tag[data-tag="SCSS"] {
   @apply bg-[#CD6799] text-[#FFD1E8];
 }
+
+.project__tag[data-tag="Express"] {
+  @apply bg-gray-700 text-gray-200;
+}
+
+.project__tag[data-tag="Vercel"] {
+  @apply bg-black text-white;
+}
