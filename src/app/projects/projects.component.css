@@ -123,3 +123,7 @@
 .project__tag[data-tag="Vercel"] {
   @apply bg-black text-white;
 }
+
+.project__tag[data-tag="GHPages"] {
+  @apply bg-[#171515] text-[#FAFAFA];
+}
