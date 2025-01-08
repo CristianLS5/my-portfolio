@@ -60,9 +60,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         },
         {
           id: 3,
-          title: 'Battle.net OAuth2 Demo',
-          description:
-            "A full-stack authentication system using Battle.net's OAuth2 API with cookie consent management",
+          title: 'PROJECTS.PROJECT3.TITLE',
+          description: 'PROJECTS.PROJECT3.DESCRIPTION',
           backgroundImage: 'assets/images/wow-api-authentication.png',
           tags: ['JavaScript', 'Express', 'Vercel'],
           url: 'https://wow-api-authentication.vercel.app/',
@@ -71,9 +70,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           id: 4,
           title: 'PROJECTS.PROJECT4.TITLE',
           description: 'PROJECTS.PROJECT4.DESCRIPTION',
-          backgroundImage: 'assets/images/angular.png',
-          tags: ['Angular', 'TypeScript', 'RxJS'],
-          url: 'https://example.com/project4',
+          backgroundImage: 'assets/images/scratch-card-game.png',
+          tags: ['Angular', 'SCSS', 'GHPages'],
+          url: 'https://cristianls5.github.io/scratch-card-game/',
         },
       ]);
       this.isLoading.set(false);

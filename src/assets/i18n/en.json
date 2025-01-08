@@ -41,12 +41,12 @@
       "DESCRIPTION": "Modern CSS and animation techniques showcase"
     },
     "PROJECT3": {
-      "TITLE": "React Project",
-      "DESCRIPTION": "A sample React project"
+      "TITLE": "Battle.net OAuth2 Demo",
+      "DESCRIPTION": "A full-stack authentication system using Battle.net's OAuth2 API with cookie consent management"
     },
     "PROJECT4": {
-      "TITLE": "Angular Project",
-      "DESCRIPTION": "A sample Angular project"
+      "TITLE": "Scratch Card Game",
+      "DESCRIPTION": "An interactive scratch card game with winter theme"
     }
   },
   "NEWS": {

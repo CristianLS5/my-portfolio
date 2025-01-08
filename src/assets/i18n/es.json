@@ -41,12 +41,12 @@
       "DESCRIPTION": "Muestra de técnicas de animación en CSS"
     },
     "PROJECT3": {
-      "TITLE": "Proyecto React",
-      "DESCRIPTION": "Un proyecto de ejemplo en React"
+      "TITLE": "Demo de OAuth2 de Battle.net",
+      "DESCRIPTION": "Un sistema de autenticación completo usando la API OAuth2 de Battle.net con gestión de consentimiento de cookies"
     },
     "PROJECT4": {
-      "TITLE": "Proyecto Angular",
-      "DESCRIPTION": "Un proyecto de ejemplo en Angular"
+      "TITLE": "Juego de Rasca y Gana",
+      "DESCRIPTION": "Un juego interactivo de rasca y gana con tema invernal"
     }
   },
   "NEWS": {
