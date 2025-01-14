@@ -45,13 +45,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   isDarkMode = false;
   private darkModeSubscription: Subscription | undefined;
 
-  constructor(
-    private translate: TranslateService
-  ) {}
+  constructor(private translate: TranslateService) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.darkModeSubscription?.unsubscribe();
@@ -71,6 +67,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   technologies = [
     {
+      text: 'Cristian López',
+      shortText: 'Cristian López',
+    },
+    {
       text: 'a Software Developer',
       shortText: 'a Software Dev',
     },
@@ -81,10 +81,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       text: 'an Angular Enthusiast',
       shortText: 'an Angular Dev',
-    },
-    {
-      text: 'Ironman',
-      shortText: 'Ironman',
-    },
+    }
   ];
 }

@@ -12,13 +12,8 @@
     "RIGHTS": "All rights reserved",
     "DOWNLOAD_RESUME": "Download Resume"
   },
-  "INTRO": {
-    "TITLE": "Hello, I'm Cristian López Solá",
-    "DESCRIPTION": "Software Developer | Frontend Specialist | Angular Enthusiast"
-  },
   "HOME": {
-    "GREETING": "Hello, I'm Cristian",
-    "WELCOME": "Welcome to my portfolio",
+    "GREETING": "Hello, I'm",
     "DESCRIPTION": "I'm a passionate front-end developer specialized in Angular, crafting clean and efficient user interfaces.\nWhen I'm not immersed in code, you'll find me exploring Japanese culture 🇯🇵, diving into captivating video game worlds 🎮, or following the latest Marvel adventures 🦸‍♂️.",
     "BUTTON": {
       "WORK": "View Work",
