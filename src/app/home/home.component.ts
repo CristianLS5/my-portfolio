@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IntroComponent } from '../intro/intro.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { ArticlesComponent } from '../articles/articles.component';
@@ -28,7 +27,6 @@ import {
   imports: [
     CommonModule,
     TypewriterComponent,
-    IntroComponent,
     SkillsComponent,
     ProjectsComponent,
     ArticlesComponent,
