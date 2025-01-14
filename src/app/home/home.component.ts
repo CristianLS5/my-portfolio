@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
-import { ArticlesComponent } from '../articles/articles.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faLinkedin,
@@ -29,7 +28,6 @@ import {
     TypewriterComponent,
     SkillsComponent,
     ProjectsComponent,
-    ArticlesComponent,
     FontAwesomeModule,
     NgOptimizedImage,
     ContactComponent,
