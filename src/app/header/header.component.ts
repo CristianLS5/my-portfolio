@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Input,
   Output,
   EventEmitter,
   signal,
@@ -29,8 +28,6 @@ import { LanguageService } from '../services/language.service';
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
-    RouterLinkActive,
     FontAwesomeModule,
     RouterModule,
     TranslateModule,
@@ -42,6 +39,7 @@ export class HeaderComponent {
   @Output() toggleDarkMode = new EventEmitter<void>();
   showHeaderContent = signal(false);
   currentLang: string;
+  isMobileMenuOpen = false;
 
   constructor(
     private el: ElementRef,
@@ -86,5 +84,9 @@ export class HeaderComponent {
   toggleLanguage() {
     this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
     this.languageService.setLanguage(this.currentLang);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
 }
