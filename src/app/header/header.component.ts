@@ -21,7 +21,6 @@ import {
   faFileDownload,
 } from '@fortawesome/free-solid-svg-icons';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
-import { DarkModeService } from '../services/dark-mode.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../services/language.service';
 
@@ -46,16 +45,11 @@ export class HeaderComponent {
 
   constructor(
     private el: ElementRef,
-    public darkModeService: DarkModeService,
     private router: Router,
     private translateService: TranslateService,
     private languageService: LanguageService
   ) {
     this.currentLang = this.translateService.currentLang;
-  }
-
-  get isDarkMode() {
-    return this.darkModeService.isDarkMode();
   }
 
   getResumeUrl(): string {

@@ -1,8 +1,4 @@
-<div class="min-h-screen" [ngClass]="{
-       'bg-white text-gray-900 border-white': !isDarkMode, 
-       'bg-gray-900 text-white border-gray-800': isDarkMode
-     }">
-  <app-header (toggleDarkMode)="toggleDarkMode()"></app-header>
+<div class="min-h-screen">
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>

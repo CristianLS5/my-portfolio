@@ -12,7 +12,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { TypewriterComponent } from '../typewriter/typewriter.component';
 import { NgOptimizedImage } from '@angular/common';
-import { DarkModeService } from '../services/dark-mode.service';
 import { Subscription } from 'rxjs';
 import { ContactComponent } from '../contact/contact.component';
 import { AboutComponent } from '../about/about.component';
@@ -51,18 +50,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   private darkModeSubscription: Subscription | undefined;
 
   constructor(
-    private darkModeService: DarkModeService,
     private translate: TranslateService
   ) {}
 
   ngOnInit() {
-    this.isDarkMode = this.darkModeService.isDarkMode();
 
-    this.darkModeSubscription = this.darkModeService.darkMode$.subscribe(
-      (isDark) => {
-        this.isDarkMode = isDark;
-      }
-    );
   }
 
   ngOnDestroy() {

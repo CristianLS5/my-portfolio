@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -9,7 +9,6 @@ import {
   faGithub,
   faDocker,
 } from '@fortawesome/free-brands-svg-icons';
-import { DarkModeService } from '../services/dark-mode.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface TechLogo {
@@ -31,8 +30,6 @@ interface TechLogo {
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
-  private darkModeService = inject(DarkModeService);
-  isDarkMode$ = this.darkModeService.darkMode$;
 
   centralLogo = {
     name: 'Angular',
@@ -111,12 +108,4 @@ export class AboutComponent {
       startPosition: '315deg',
     },
   ]);
-
-  getGitHubColor(isDarkMode: boolean) {
-    return isDarkMode ? '#ffffff' : '#181717';
-  }
-
-  getLogoColor(logo: TechLogo, isDarkMode: boolean | null): string {
-    return isDarkMode && logo.darkModeColor ? logo.darkModeColor : logo.color;
-  }
 }
