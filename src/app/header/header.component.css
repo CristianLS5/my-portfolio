@@ -7,13 +7,13 @@ header {
   border-bottom: 1px solid rgba(75, 85, 99, 0.3);
 }
 
-/* Navigation link hover effect */
-a {
+/* Navigation link hover effect - only for menu items, not buttons */
+a:not(.glow-button) {
   position: relative;
   transition: color 0.3s ease;
 }
 
-a::after {
+a:not(.glow-button)::after {
   content: '';
   position: absolute;
   width: 0;
@@ -24,11 +24,6 @@ a::after {
   transition: width 0.3s ease;
 }
 
-a:hover::after {
+a:not(.glow-button):hover::after {
   width: 100%;
-}
-
-/* Resume button glow effect */
-.bg-red-600:hover {
-  box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
 }
