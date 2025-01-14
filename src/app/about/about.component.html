@@ -1,28 +1,7 @@
 <div id="about" class="max-w-4xl mx-auto px-4 py-8">
-    <h2 class="text-4xl font-bold mb-8 text-left">{{ 'ABOUT.TITLE' | translate }}</h2>
-    <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/2 mb-8 md:mb-0"> <!-- Added mb-8 for mobile spacing -->
-            <p class="text-lg leading-relaxed">{{ 'ABOUT.DESCRIPTION' | translate }}</p>
-        </div>
-        <div class="md:w-1/2">
-            <div class="solar-system">
-                <div class="sun" [style.width]="centralLogo.size" [style.height]="centralLogo.size">
-                    <fa-icon [icon]="centralLogo.icon" [style.color]="centralLogo.color" [size]="'3x'"></fa-icon>
-                </div>
-                @for (logo of techLogos(); track logo.name) {
-                <div class="orbit" [style.animation-duration]="logo.animationDuration"
-                    [style.transform]="'rotate(' + logo.startPosition + ')'">
-                    <div class="planet" [style.width]="logo.size" [style.height]="logo.size">
-                        @if (logo.isSvg) {
-                        <img [src]="'assets/icons/' + logo.icon" [alt]="logo.name" class="w-full h-full object-contain">
-                        } @else {
-                        <fa-icon [icon]="logo.icon"
-                            [size]="'2x'"></fa-icon>
-                        }
-                    </div>
-                </div>
-                }
-            </div>
-        </div>
-    </div>
+    <h2 class="text-4xl font-bold mb-8 text-white">About Me</h2>
+    <p class="text-gray-300">
+        Experienced working with teams to produce impactful...
+    </p>
+    <!-- Rest of your content -->
 </div>
