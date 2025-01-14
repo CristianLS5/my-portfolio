@@ -1,59 +1,35 @@
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-    [ngClass]="{'bg-gray-100/80 dark:bg-gray-800/80 backdrop-blur-sm': showHeaderContent(), 'bg-transparent': !showHeaderContent()}">
-    <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2 transition-opacity duration-300"
-            [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
-            <span class="text-xl font-bold text-gray-900 dark:text-white hidden md:inline">Cristian López</span>
-            <fa-icon [icon]="faLaptopCode" [size]="'lg'" class="text-gray-700 dark:text-gray-300"></fa-icon>
-            <fa-icon [icon]="faCode" [size]="'lg'" class="text-gray-700 dark:text-gray-300"></fa-icon>
-            <fa-icon [icon]="faAngular" [size]="'xl'" class="text-gray-700 dark:text-gray-300"></fa-icon>
-            <span class="text-xl font-bold text-gray-900 dark:text-white hidden md:inline">Developer</span>
-        </div>
+<header class="fixed top-0 left-0 right-0 z-50 bg-black border-b border-gray-800">
+    <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Logo/Name section -->
+            <div class="flex items-center">
+                <span class="text-red-500 mr-2">&lt;/&gt;</span>
+                <span class="text-white font-bold">CRISTIAN LOPEZ</span>
+            </div>
 
-        <!-- Desktop menu -->
-        <ul class="hidden md:flex space-x-4 transition-opacity duration-300 items-center"
-            [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
-            <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
-                    class="header-link">{{ 'HEADER.HOME' | translate }}</a></li>
-            <li><a (click)="scrollToSection('about')" class="header-link cursor-pointer">{{ 'HEADER.ABOUT' | translate
-                    }}</a></li>
-            <li><a (click)="scrollToSection('projects')" class="header-link cursor-pointer">{{ 'HEADER.PROJECTS' |
-                    translate }}</a></li>
-            <li><a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.NEWS' | translate
-                    }}</a></li>
-            <li><a (click)="scrollToSection('contact')" class="header-link cursor-pointer">{{ 'HEADER.CONTACT' |
-                    translate }}</a></li>
-            <li><a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.RESUME' |
-                    translate }}</a></li>
-        </ul>
-
-        <!-- Mobile menu -->
-        <ul class="md:hidden flex space-x-4 transition-opacity duration-300 items-center"
-            [ngClass]="{'opacity-0 invisible': !showHeaderContent(), 'opacity-100 visible': showHeaderContent()}">
-            <li><a routerLink="/" routerLinkActive="text-blue-500" [routerLinkActiveOptions]="{exact: true}"
-                    class="header-link">{{ 'HEADER.HOME' | translate }}</a></li>
-            <li><a routerLink="/news" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.NEWS' | translate
-                    }}</a></li>
-            <li><a routerLink="/resume" routerLinkActive="text-blue-500" class="header-link">{{ 'HEADER.DOWNLOAD_RESUME' |
-                    translate }}</a></li>
-        </ul>
-
-        <div class="flex items-center space-x-4">
-            <!-- Desktop: Download resume text + icon -->
-            <a [href]="getResumeUrl()" download class="hidden md:flex header-link items-center space-x-1">
-                <span>{{ 'HEADER.DOWNLOAD_RESUME' | translate }}</span>
-                <fa-icon [icon]="faFileDownload"></fa-icon>
-            </a>
-            <!-- Mobile: Download resume icon only (larger) -->
-            <a [href]="getResumeUrl()" download class="md:hidden header-link">
-                <fa-icon [icon]="faFileDownload" [size]="'lg'"></fa-icon>
-            </a>
-            <!-- Language toggle button -->
-            <button (click)="toggleLanguage()"
-                class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 transition-colors duration-300">
-                {{ currentLang === 'en' ? 'ES' : 'EN' }}
+            <!-- Navigation Links -->
+            <button class="md:hidden text-white" (click)="toggleMobileMenu()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             </button>
 
+            <div class="hidden md:flex items-center space-x-6" [ngClass]="{'hidden': !isMobileMenuOpen}">
+                <a href="#about" class="text-gray-300 hover:text-white">ABOUT</a>
+                <a href="#work" class="text-gray-300 hover:text-white">WORK</a>
+                <a href="#contact" class="text-gray-300 hover:text-white">CONTACT</a>
+                <a href="#news" class="text-gray-300 hover:text-white">NEWS</a>
+                <a href="/resume" 
+                   class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors duration-300">
+                    RESUME ↓
+                </a>
+                <button class="text-gray-300 hover:text-white">
+                    EN ↓
+                </button>
+            </div>
         </div>
     </nav>
 </header>
+
+<!-- Add spacing below header -->
+<div class="h-16"></div>
