@@ -27,7 +27,7 @@
   }
 
   .social-icon:hover {
-    @apply bg-red-600;
+    @apply bg-zinc-700;
   }
 
   .social-icon svg {
