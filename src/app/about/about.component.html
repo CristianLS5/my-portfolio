@@ -6,19 +6,19 @@
         </div>
         <div class="md:w-1/2">
             <div class="solar-system">
-                <div class="sun" [style.width]="centralLogo.size" [style.height]="centralLogo.size">
-                    <fa-icon [icon]="centralLogo.icon" [style.color]="centralLogo.color" [size]="'3x'"></fa-icon>
+                <div class="sun">
+                    <img [src]="'assets/icons/' + centralLogo.icon" 
+                         [alt]="centralLogo.name"
+                         [style.width]="centralLogo.size"
+                         [style.height]="centralLogo.size">
                 </div>
                 @for (logo of techLogos(); track logo.name) {
-                <div class="orbit" [style.animation-duration]="logo.animationDuration"
-                    [style.transform]="'rotate(' + logo.startPosition + ')'">
-                    <div class="planet" [style.width]="logo.size" [style.height]="logo.size">
-                        @if (logo.isSvg) {
-                        <img [src]="'assets/icons/' + logo.icon" [alt]="logo.name" class="w-full h-full object-contain">
-                        } @else {
-                        <fa-icon [icon]="logo.icon"
-                            [size]="'2x'"></fa-icon>
-                        }
+                <div class="orbit" [style.animation-duration]="logo.animationDuration">
+                    <div class="planet" [style.transform]="'rotate(' + logo.startPosition + ')'">
+                        <img [src]="'assets/icons/' + logo.icon" 
+                             [alt]="logo.name"
+                             [style.width]="logo.size"
+                             [style.height]="logo.size">
                     </div>
                 </div>
                 }
