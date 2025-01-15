@@ -53,7 +53,10 @@
   },
 
   "CONTACT": {
-    "TITLE": "Contact",
+    "TITLE": "Let's connect",
+    "SAY_HELLO": "Say hello at",
+    "EMAIL": "cristianlopez@gmail.com",
+    "CHECK_RESUME": "Check out my full experience in my",
     "BUTTON": {
       "SEND": "Send Message"
     },

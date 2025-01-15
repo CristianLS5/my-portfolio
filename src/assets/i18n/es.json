@@ -52,7 +52,10 @@
     "GITHUB": "Ver en GitHub"
   },
   "CONTACT": {
-    "TITLE": "Contacto",
+    "TITLE": "Conectemos",
+    "SAY_HELLO": "Di hola en",
+    "EMAIL": "cristianlopez@gmail.com",
+    "CHECK_RESUME": "Conoce mi experiencia completa en mi",
     "BUTTON": {
       "SEND": "Enviar Mensaje"
     },
