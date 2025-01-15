@@ -77,7 +77,8 @@
                     }
                 </div>
 
-                <button type="submit" [disabled]="contactForm.invalid || submitting" class="glow-button w-full">
+                <button type="submit" [disabled]="contactForm.invalid || submitting" 
+                    class="glow-button w-full flex justify-center items-center">
                     {{ submitting ? ('CONTACT.SENDING' | translate) : ('CONTACT.BUTTON.SEND' | translate) }}
                 </button>
             </form>
