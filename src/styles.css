@@ -47,6 +47,14 @@
     @apply grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-2 mx-auto;
     max-width: 600px;
   }
+
+  .lang-toggle {
+    @apply inline-flex items-center justify-center w-10 h-10 rounded-full 
+           bg-zinc-700 text-gray-200 
+           transition-colors duration-300 
+           hover:bg-zinc-600 hover:text-white
+           text-sm font-medium;
+  }
 }
 
 @keyframes pulse {

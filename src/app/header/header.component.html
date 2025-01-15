@@ -25,8 +25,9 @@
                     RESUME
                     <img src="assets/icons/download.svg" alt="Download icon" class="w-4 h-4 ml-1" />
                 </a>
-                <button class="text-gray-300 hover:text-white">
-                    EN ↓
+                <button (click)="toggleLanguage()"
+                    class="lang-toggle">
+                    {{ currentLang === 'en' ? 'ES' : 'EN' }}
                 </button>
             </div>
         </div>
