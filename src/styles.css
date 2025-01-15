@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -20,6 +20,32 @@
 @layer components {
   .glow-button {
     @apply inline-flex items-center relative overflow-visible transition-colors duration-300 rounded-full px-4 py-2 bg-red-600 text-white hover:bg-red-700;
+  }
+
+  .social-icon {
+    @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-zinc-800 text-white transition-colors duration-300;
+  }
+
+  .social-icon:hover {
+    @apply bg-red-600;
+  }
+
+  .social-icon svg {
+    @apply w-5 h-5;
+  }
+
+   .skill-icon {
+    @apply inline-flex items-center justify-center w-14 h-14 rounded-full bg-zinc-800;
+  }
+
+  .skill-icon img, 
+  .skill-icon fa-icon {
+    @apply w-8 h-8;
+  }
+
+  .skill-grid {
+    @apply grid grid-cols-4 sm:grid-cols-6 md:grid-cols-7 lg:grid-cols-8 gap-2 mx-auto;
+    max-width: 600px;
   }
 }
 

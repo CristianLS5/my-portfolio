@@ -10,34 +10,18 @@
                     <p class="text-lg mt-2">
                         {{ 'HOME.DESCRIPTION' | translate}}
                     </p>
-                    <div class="mt-8 flex space-x-4">
-                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer"
-                            class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
-                            <fa-icon [icon]="faLinkedin" size="2x"></fa-icon>
-                        </a>
-                        <a href="https://github.com/CristianLS5" target="_blank" rel="noopener noreferrer"
-                            class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
-                            <fa-icon [icon]="faGithub" size="2x"></fa-icon>
-                        </a>
-                        <a [href]="getResumeUrl()" download [title]="'HOME.BUTTON.DOWNLOAD_RESUME' | translate"
-                            class="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors duration-300">
-                            <fa-icon [icon]="faFileDownload" size="2x"></fa-icon>
-                        </a>
-                    </div>
-                    <div class="mt-8">
-                        <a href="#projects"
-                            class="glow-button mr-4">
-                            {{ 'HOME.BUTTON.WORK' | translate }}
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
+                    <div class="mt-8 flex items-center space-x-4">
                         <a href="#contact"
                             class="glow-button">
                             {{ 'HOME.BUTTON.CONTACT' | translate }}
+                        </a>
+                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer"
+                            class="social-icon">
+                            <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="w-7 h-7" />
+                        </a>
+                        <a href="https://github.com/CristianLS5" target="_blank" rel="noopener noreferrer"
+                            class="social-icon">
+                            <img src="assets/icons/github.svg" alt="GitHub" class="w-7 h-7" />
                         </a>
                     </div>
                 </div>
@@ -53,7 +37,7 @@
         </div>
 
         <app-about></app-about>
-        <app-skills [isDarkMode]="isDarkMode" class="mt-16"></app-skills>
+        <app-skills class="mt-16"></app-skills>
         <app-projects id="projects"></app-projects>
         <app-contact id="contact"></app-contact>
     </div>
