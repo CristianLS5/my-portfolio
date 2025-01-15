@@ -21,7 +21,7 @@ export class SkillsComponent {
     { name: 'CSS3', icon: 'css3.svg', color: '#1572B6' },
     { name: 'HTML5', icon: 'html5.svg', color: '#E34F26' },
     { name: 'Figma', icon: 'figma.svg', color: '#F24E1E' },
-    { name: 'ASP.NET', icon: 'azuredevops.svg', color: '#5C2D91' },
+    { name: 'Azure DevOps', icon: 'azuredevops.svg', color: '#5C2D91' },
     { name: 'Tailwind CSS', icon: 'tailwind-css.svg', color: '#06B6D4' },
     { name: 'Jasmine', icon: 'jasmine.svg', color: '#8A4182' },
     { name: 'Karma', icon: 'karma.svg', color: '#56C0A7' },
