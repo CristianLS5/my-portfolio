@@ -34,10 +34,20 @@
             </div>
         </div>
 
-        <app-about></app-about>
-        <app-skills class="mt-16"></app-skills>
-        <app-projects id="projects"></app-projects>
-        <app-resume class="mt-16" [showTeaser]="true"></app-resume>
-        <app-contact id="contact"></app-contact>
+        <div appFadeIn>
+          <app-about></app-about>
+        </div>
+        <div appFadeIn>
+          <app-skills class="mt-16"></app-skills>
+        </div>
+        <div appFadeIn>
+          <app-projects id="projects"></app-projects>
+        </div>
+        <div appFadeIn>
+          <app-resume class="mt-16" [showTeaser]="true"></app-resume>
+        </div>
+        <div appFadeIn>
+          <app-contact id="contact"></app-contact>
+        </div>
     </div>
 </div>

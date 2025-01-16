@@ -9,7 +9,7 @@ import {
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { EmailService } from '../services/email.service';
+import { EmailService } from '../shared/services/email.service';
 
 @Component({
   selector: 'app-contact',

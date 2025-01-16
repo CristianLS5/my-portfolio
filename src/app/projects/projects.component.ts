@@ -2,8 +2,8 @@ import { Component, signal, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../models/project.interface';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../services/language.service';
 import { Subscription, interval } from 'rxjs';
+import { LanguageService } from '../shared/services/language.service';
 
 @Component({
   selector: 'app-projects',

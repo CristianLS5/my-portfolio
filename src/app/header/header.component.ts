@@ -10,7 +10,7 @@ import {
 } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../services/language.service';
+import { LanguageService } from '../shared/services/language.service';
 
 @Component({
   selector: 'app-header',

@@ -5,10 +5,11 @@ import { ProjectsComponent } from '../projects/projects.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TypewriterComponent } from '../typewriter/typewriter.component';
 import { NgOptimizedImage } from '@angular/common';
-import { ContactComponent } from '../contact/contact.component';
 import { AboutComponent } from '../about/about.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ResumeComponent } from '../resume/resume.component';
+import { ContactComponent } from '../contact/contact.component';
+import { FadeInDirective } from '../shared/directives/fade-in.directive';
 
 @Component({
   selector: 'app-home',
@@ -24,12 +25,12 @@ import { ResumeComponent } from '../resume/resume.component';
     ContactComponent,
     AboutComponent,
     TranslateModule,
+    FadeInDirective,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {}
