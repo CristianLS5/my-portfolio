@@ -71,4 +71,19 @@ export class HeaderComponent {
   toggleMobileMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
   }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const menu = document.querySelector('.mobile-menu');
+    const hamburger = document.querySelector('.hamburger-button');
+
+    // Check if click is outside both menu and hamburger button
+    if (this.isMobileMenuOpen && 
+        menu && 
+        hamburger && 
+        !menu.contains(event.target as Node) && 
+        !hamburger.contains(event.target as Node)) {
+      this.isMobileMenuOpen = false;
+    }
+  }
 }

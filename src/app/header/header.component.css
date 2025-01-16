@@ -7,7 +7,28 @@ header {
   border-bottom: 1px solid rgba(75, 85, 99, 0.3);
 }
 
-/* Navigation link hover effect - only for menu items, not buttons */
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  .mobile-menu-open {
+    background-color: rgba(24, 24, 27, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(75, 85, 99, 0.3);
+    border-left: 1px solid rgba(75, 85, 99, 0.3);
+    height: calc(100vh - 4rem);
+  }
+
+
+  .space-x-6 > * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+ 
+  .glow-button {
+    width: fit-content;
+  }
+}
+
 a:not(.glow-button) {
   position: relative;
   transition: color 0.3s ease;
@@ -20,7 +41,7 @@ a:not(.glow-button)::after {
   height: 2px;
   bottom: -4px;
   left: 0;
-  background-color: #ef4444; /* red-500 */
+  background-color: #ef4444;
   transition: width 0.3s ease;
 }
 

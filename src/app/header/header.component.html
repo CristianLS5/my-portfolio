@@ -1,32 +1,30 @@
 <header class="fixed top-0 left-0 right-0 z-50">
     <nav class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
-            <!-- Logo/Name section -->
             <div class="flex items-center">
                 <img src="assets/icons/code.svg" alt="Code icon" class="w-6 h-6 mr-2" />
                 <span class="text-white font-bold">CRISTIAN LÓPEZ</span>
             </div>
 
-            <!-- Mobile menu toggle button -->
-            <button class="md:hidden text-white" (click)="toggleMobileMenu()">
+            <button class="md:hidden text-white hamburger-button" (click)="toggleMobileMenu()">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
 
-            <!-- Navigation Links -->
-            <div class="hidden md:flex items-center space-x-6" [ngClass]="{'hidden': !isMobileMenuOpen}">
+            <div class="hidden md:flex items-center space-x-6 mobile-menu" 
+                 [ngClass]="{'!flex flex-col fixed top-16 right-0 w-64 bg-zinc-900/95 p-4 space-y-4 items-end': isMobileMenuOpen}">
                 <a href="#about" class="text-gray-300 hover:text-white">ABOUT</a>
                 <a href="#skills" class="text-gray-300 hover:text-white">SKILLS</a>
                 <a href="#work" class="text-gray-300 hover:text-white">WORK</a>
                 <a href="#experience" class="text-gray-300 hover:text-white">EXPERIENCE</a>
                 <a href="#contact" class="text-gray-300 hover:text-white">CONTACT</a>
-                <a [href]="getResumeUrl()" class="glow-button">
+                <a [href]="getResumeUrl()" class="glow-button" download>
                     RESUME
                     <img src="assets/icons/download.svg" alt="Download icon" class="w-4 h-4 ml-1" />
                 </a>
                 <button (click)="toggleLanguage()"
-                    class="lang-toggle">
+                    class="lang-toggle !w-12">
                     {{ currentLang === 'en' ? 'ES' : 'EN' }}
                 </button>
             </div>
@@ -34,5 +32,4 @@
     </nav>
 </header>
 
-<!-- Add spacing below header -->
 <div class="h-16"></div>
