@@ -5,9 +5,11 @@ import {
   QueryList,
   signal,
   ViewChildren,
+  Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 interface Experience {
   id: number;
@@ -27,6 +29,7 @@ interface Experience {
   styleUrls: ['./resume.component.css'],
 })
 export class ResumeComponent implements AfterViewInit {
+  @Input() showTeaser = false;
   @ViewChildren('experienceCard') experienceCards!: QueryList<ElementRef>;
 
   experiences = signal<Experience[]>([
@@ -146,6 +149,16 @@ export class ResumeComponent implements AfterViewInit {
       tasks: ['Dual vocational training'],
     },
   ]);
+
+  constructor(private router: Router) {}
+
+  get displayedExperiences() {
+    return this.showTeaser ? this.experiences().slice(0, 1) : this.experiences();
+  }
+
+  navigateToFullResume() {
+    this.router.navigate(['/resume']);
+  }
 
   ngAfterViewInit() {
     this.observeExperienceCards();

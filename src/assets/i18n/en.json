@@ -43,14 +43,6 @@
       "DESCRIPTION": "An interactive scratch card game with winter theme"
     }
   },
-  "NEWS": {
-    "TITLE_ARTICLES": "Angular News",
-    "TITLE_NEWS": "Latest Angular Releases",
-    "BUTTON": {
-      "MORE": "See more"
-    },
-    "GITHUB": "View on GitHub"
-  },
 
   "CONTACT": {
     "TITLE": "Let's connect",
@@ -79,6 +71,7 @@
   },
 
   "RESUME": {
-    "TITLE": "My Experience"
+    "TITLE": "My Experience",
+    "VIEW_MORE": "VIEW MORE"
   }
 }

@@ -43,14 +43,6 @@
       "DESCRIPTION": "Un juego interactivo de rasca y gana con tema invernal"
     }
   },
-  "NEWS": {
-    "TITLE_ARTICLES": "Noticias de Angular",
-    "TITLE_NEWS": "Últimas versiones de Angular",
-    "BUTTON": {
-      "MORE": "Ver más"
-    },
-    "GITHUB": "Ver en GitHub"
-  },
   "CONTACT": {
     "TITLE": "Conectemos",
     "SAY_HELLO": "Di hola en",
@@ -77,6 +69,7 @@
     }
   },
   "RESUME": {
-    "TITLE": "Mi Experiencia"
+    "TITLE": "Mi Experiencia",
+    "VIEW_MORE": "VER MÁS"
   }
 }

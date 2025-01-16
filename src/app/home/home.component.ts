@@ -1,24 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faLinkedin,
-  faGithub,
-  faAngular,
-} from '@fortawesome/free-brands-svg-icons';
 import { TypewriterComponent } from '../typewriter/typewriter.component';
 import { NgOptimizedImage } from '@angular/common';
-import { Subscription } from 'rxjs';
 import { ContactComponent } from '../contact/contact.component';
 import { AboutComponent } from '../about/about.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import {
-  faCode,
-  faFileDownload,
-  faLaptopCode,
-} from '@fortawesome/free-solid-svg-icons';
+import { ResumeComponent } from '../resume/resume.component';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +18,7 @@ import {
     TypewriterComponent,
     SkillsComponent,
     ProjectsComponent,
+    ResumeComponent,
     FontAwesomeModule,
     NgOptimizedImage,
     ContactComponent,
@@ -37,21 +28,11 @@ import {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  faLinkedin = faLinkedin;
-  faGithub = faGithub;
-  faFileDownload = faFileDownload;
-
-  isDarkMode = false;
-  private darkModeSubscription: Subscription | undefined;
+export class HomeComponent implements OnInit {
 
   constructor(private translate: TranslateService) {}
 
   ngOnInit() {}
-
-  ngOnDestroy() {
-    this.darkModeSubscription?.unsubscribe();
-  }
 
   getResumeUrl(): string {
     return this.translate.currentLang === 'en'
@@ -81,6 +62,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       text: 'an Angular Enthusiast',
       shortText: 'an Angular Dev',
-    }
+    },
   ];
 }

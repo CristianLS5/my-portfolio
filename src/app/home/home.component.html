@@ -11,12 +11,10 @@
                         {{ 'HOME.DESCRIPTION' | translate}}
                     </p>
                     <div class="mt-8 flex items-center space-x-4">
-                        <a href="#contact"
-                            class="glow-button">
+                        <a href="#contact" class="glow-button">
                             {{ 'HOME.BUTTON.CONTACT' | translate }}
                         </a>
-                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer"
-                            class="social-icon">
+                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer" class="social-icon">
                             <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="w-7 h-7" />
                         </a>
                         <a href="https://github.com/CristianLS5" target="_blank" rel="noopener noreferrer"
@@ -39,6 +37,7 @@
         <app-about></app-about>
         <app-skills class="mt-16"></app-skills>
         <app-projects id="projects"></app-projects>
+        <app-resume class="mt-16" [showTeaser]="true"></app-resume>
         <app-contact id="contact"></app-contact>
     </div>
 </div>
