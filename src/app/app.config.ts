@@ -9,7 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { routes } from './app.routes';
 import { NgxTypedWriterModule } from 'ngx-typed-writer';
 import { provideHttpClient } from '@angular/common/http';
-import { TranslateConfigService } from './services/translate-config.service';
+import { TranslateConfigService } from './shared/services/translate-config.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
