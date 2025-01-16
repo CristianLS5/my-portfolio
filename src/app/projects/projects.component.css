@@ -1,129 +1,133 @@
-.projects {
-  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+.carousel-container {
+  @apply relative overflow-hidden w-full cursor-grab;
+  height: 280px;
 }
 
-.projects__item {
-  @apply w-full;
+.carousel-container:active {
+  @apply cursor-grabbing;
 }
 
-.project {
-  @apply relative h-64 bg-cover bg-center rounded-lg overflow-hidden transition-all duration-300 ease-in-out;
-  position: relative;
-  transform: scale(1);
+.carousel {
+  @apply flex justify-center items-center h-full;
+  transform-style: preserve-3d;
 }
 
-.project::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
+.carousel-item {
+  @apply absolute transition-all duration-500;
+  width: 400px;
+  height: 220px;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  visibility: hidden;
+}
+
+.carousel-item.prev-2,
+.carousel-item.prev,
+.carousel-item.active,
+.carousel-item.next,
+.carousel-item.next-2 {
+  visibility: visible;
+}
+
+.carousel-item.prev-2 {
+  opacity: 0.3;
+  transform: translateX(-120%) scale(0.8);
   z-index: 1;
-  pointer-events: none;
 }
 
-.project::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay by default */
-  transition: opacity 0.3s ease-in-out;
-  z-index: 1;
-}
-
-.group:hover .project {
-  transform: scale(0.98);
-}
-
-.group:hover .project::before {
-  opacity: 1;
-  box-shadow: 0 0 20px 10px currentColor, inset 0 0 20px 5px currentColor;
-}
-
-.group:hover .project::after {
-  opacity: 0; /* Remove the overlay on hover */
-}
-
-.project__content {
-  @apply absolute inset-0 text-white p-4 flex flex-col justify-end transition-all duration-300;
+.carousel-item.prev {
+  opacity: 0.6;
+  transform: translateX(-60%) scale(0.9);
   z-index: 2;
 }
 
-.group:hover .project__content {
-  @apply bg-opacity-50;
+.carousel-item.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  z-index: 3;
 }
 
-.project__title,
-.project__description,
+.carousel-item.next {
+  opacity: 0.6;
+  transform: translateX(60%) scale(0.9);
+  z-index: 2;
+}
+
+.carousel-item.next-2 {
+  opacity: 0.3;
+  transform: translateX(120%) scale(0.8);
+  z-index: 1;
+}
+
+.project {
+  @apply relative w-full h-full bg-cover bg-center rounded-lg overflow-hidden;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+}
+
+.carousel-item.active .project {
+  filter: brightness(1.2);
+  box-shadow: 
+    0 0 30px rgba(220, 38, 38, 0.3),
+    0 10px 40px -10px rgba(220, 38, 38, 0.6);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.carousel-item:not(.active) .project {
+  filter: brightness(0.7);
+}
+
+.project__overlay {
+  @apply absolute inset-0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.project__content {
+  @apply absolute inset-0 flex flex-col justify-end p-4 z-10;
+}
+
+.project__title {
+  @apply text-lg font-mono font-bold mb-1 text-white;
+}
+
+.project__description {
+  @apply text-xs mb-2 text-gray-200;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project__tags {
+  @apply flex flex-wrap gap-1;
+}
+
 .project__tag {
-  transition: color 0.3s ease-in-out;
+  @apply px-2 py-0.5 text-xs font-medium rounded-full;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #dc2626;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+  color: white;
 }
 
-.group:hover .project__title,
-.group:hover .project__description,
-.group:hover .project__tag {
-  color: #ffffff;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+.carousel-controls {
+  @apply absolute bottom-2 left-0 right-0 flex justify-center items-center gap-2;
 }
 
-.project__tag {
-  text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 5px currentColor;
-  border: 1px solid currentColor;
+.carousel-indicators {
+  display: none;
 }
 
-.project__tag[data-tag="Angular"] {
-  @apply bg-red-900 text-red-200;
+.carousel-arrows {
+  @apply flex justify-center gap-8;
 }
 
-.project__tag[data-tag="TypeScript"] {
-  @apply bg-blue-900 text-blue-200;
-}
-.project__tag[data-tag="Node.js"] {
-  @apply bg-green-900 text-green-200;
+.carousel-arrow {
+  @apply px-4 py-2;
 }
 
-.project__tag[data-tag="Tailwind CSS"] {
-  @apply bg-teal-900 text-teal-200;
-}
-
-.project__tag[data-tag="RxJS"] {
-  @apply bg-pink-900 text-pink-200;
-}
-
-.project__tag[data-tag="React"] {
-  @apply bg-cyan-900 text-cyan-200;
-}
-
-.project__tag[data-tag="JavaScript"] {
-  @apply bg-yellow-900 text-yellow-200;
-}
-
-.project__tag[data-tag="Redux"] {
-  @apply bg-purple-900 text-purple-200;
-}
-
-.project__tag[data-tag="Netlify"] {
-  @apply bg-[#008D82] text-[#7FFFD4];
-}
-
-.project__tag[data-tag="CSS3"] {
-  @apply bg-[#1572B6] text-[#99D0FF];
-}
-
-.project__tag[data-tag="SCSS"] {
-  @apply bg-[#CD6799] text-[#FFD1E8];
-}
-
-.project__tag[data-tag="Express"] {
-  @apply bg-gray-700 text-gray-200;
-}
-
-.project__tag[data-tag="Vercel"] {
-  @apply bg-black text-white;
-}
-
-.project__tag[data-tag="GHPages"] {
-  @apply bg-[#171515] text-[#FAFAFA];
+.carousel-arrow:hover {
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
 }

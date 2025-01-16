@@ -1,53 +1,32 @@
 <div class="home">
-    <app-intro></app-intro>
-    <div class="container mx-auto py-8 px-6 bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div class="container mx-auto py-8 px-6">
         <div class="home-content">
-            <div class="home-content__led-border"></div>
-            <div class="home-content__inner flex flex-col md:flex-row items-center max-w-4xl w-full mx-auto">
+            <div class="home-content__inner flex flex-col md:flex-row max-w-8xl w-full mx-auto">
                 <div class="md:w-1/2 md:pr-8">
-                    <h1 class="text-4xl font-bold mb-4">{{ 'HOME.GREETING' | translate }}</h1>
-                    <p class="text-xl mb-8">{{ 'HOME.WELCOME' | translate }}</p>
-                    <p class="text-lg whitespace-nowrap">
-                        I'm <app-typewriter [strings]="technologies" class="inline-block"></app-typewriter>
+                    <h1 class="text-4xl font-bold mb-4 font-mono">{{ 'HOME.GREETING' | translate }}</h1>
+                    <p class="text-2xl whitespace-nowrap">
+                        <app-typewriter [strings]="technologies" class="inline-block"></app-typewriter>
                     </p>
                     <p class="text-lg mt-2">
                         {{ 'HOME.DESCRIPTION' | translate}}
                     </p>
-                    <div class="mt-8 flex space-x-4">
-                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer"
-                            class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300">
-                            <fa-icon [icon]="faLinkedin" size="2x"></fa-icon>
+                    <div class="mt-8 flex items-center space-x-4">
+                        <a href="#contact" class="glow-button">
+                            {{ 'HOME.BUTTON.CONTACT' | translate }}
+                        </a>
+                        <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer" class="social-icon">
+                            <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="w-7 h-7" />
                         </a>
                         <a href="https://github.com/CristianLS5" target="_blank" rel="noopener noreferrer"
-                            class="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-300">
-                            <fa-icon [icon]="faGithub" size="2x"></fa-icon>
-                        </a>
-                        <a [href]="getResumeUrl()" download [title]="'HOME.BUTTON.DOWNLOAD_RESUME' | translate"
-                            class="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 transition-colors duration-300">
-                            <fa-icon [icon]="faFileDownload" size="2x"></fa-icon>
-                        </a>
-                    </div>
-                    <div class="mt-8">
-                        <a href="#projects"
-                            class="glow-button bg-blue-600 text-white px-4 py-2 rounded mr-4 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition duration-300 flex items-center">
-                            {{ 'HOME.BUTTON.WORK' | translate }}
-                            <svg xmlns="http://www.w3.org/2000/svg" class="arrow h-5 w-5 ml-2" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                        <a href="#contact"
-                            class="glow-button bg-gray-200 text-gray-900 px-4 py-2 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 transition duration-300">
-                            {{ 'HOME.BUTTON.CONTACT' | translate }}
+                            class="social-icon">
+                            <img src="assets/icons/github.svg" alt="GitHub" class="w-7 h-7" />
                         </a>
                     </div>
                 </div>
                 <div class="md:w-1/2 mt-8 md:mt-0">
                     <div class="photo">
                         <div class="photo__container">
-                            <img ngSrc="assets/images/photo-home.jpg" width="400" height="533"
+                            <img ngSrc="assets/images/photo-home.png" width="400" height="533"
                                 [alt]="'Profile photo of Cristian'" priority />
                         </div>
                     </div>
@@ -55,10 +34,20 @@
             </div>
         </div>
 
-        <app-about></app-about>
-        <app-skills [isDarkMode]="isDarkMode" class="mt-16"></app-skills>
-        <app-projects id="projects"></app-projects>
-        <app-articles [limit]="3" [showMoreButton]="true" class="mt-16"></app-articles>
-        <app-contact id="contact"></app-contact>
+        <div appFadeIn>
+          <app-about></app-about>
+        </div>
+        <div appFadeIn>
+          <app-skills class="mt-16"></app-skills>
+        </div>
+        <div appFadeIn>
+          <app-projects id="projects"></app-projects>
+        </div>
+        <div appFadeIn>
+          <app-resume class="mt-16" [showTeaser]="true"></app-resume>
+        </div>
+        <div appFadeIn>
+          <app-contact id="contact"></app-contact>
+        </div>
     </div>
 </div>

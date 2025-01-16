@@ -1,11 +1,9 @@
 import { Routes, ExtraOptions } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { NewsComponent } from './news/news.component';
 import { ResumeComponent } from './resume/resume.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'news', component: NewsComponent },
   { path: 'resume', component: ResumeComponent },
   { path: '**', redirectTo: '' },
 ];

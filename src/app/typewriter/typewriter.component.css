@@ -14,6 +14,7 @@
 .bracket {
   font-size: 1.8em;
   margin: 0 0.1em;
+  color: #dc2626;
 }
 
 ::ng-deep .typed-cursor,
@@ -23,7 +24,6 @@
 }
 
 /* Light mode styles */
-:host-context(:not(.dark)) .bracket,
 :host-context(:not(.dark)) ::ng-deep .typed-cursor,
 :host-context(:not(.dark)) ::ng-deep .typed-element {
   color: #a0a0a0;
@@ -31,7 +31,6 @@
 }
 
 /* Dark mode styles */
-:host-context(.dark) .bracket,
 :host-context(.dark) ::ng-deep .typed-cursor,
 :host-context(.dark) ::ng-deep .typed-element {
   color: #ffd700;

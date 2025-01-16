@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,ts}"],
-  darkMode: "class", // This enables dark mode
+  content: [
+    "./src/**/*.{html,ts}",
+  ],
   theme: {
     extend: {
-      rotate: {
-        12: "12deg",
+      fontFamily: {
+        mono: ['JetBrains Mono', 'monospace'],
       },
     },
   },
   plugins: [],
-};
+}

@@ -1,37 +1,22 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Input,
-  Output,
-  EventEmitter,
   signal,
   HostListener,
-  ElementRef,
 } from '@angular/core';
 import {
   Router,
-  RouterLink,
-  RouterLinkActive,
   RouterModule,
 } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faLaptopCode,
-  faCode,
-  faFileDownload,
-} from '@fortawesome/free-solid-svg-icons';
-import { faAngular } from '@fortawesome/free-brands-svg-icons';
-import { DarkModeService } from '../services/dark-mode.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { LanguageService } from '../services/language.service';
+import { LanguageService } from '../shared/services/language.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink,
-    RouterLinkActive,
     FontAwesomeModule,
     RouterModule,
     TranslateModule,
@@ -40,13 +25,11 @@ import { LanguageService } from '../services/language.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Output() toggleDarkMode = new EventEmitter<void>();
   showHeaderContent = signal(false);
   currentLang: string;
+  isMobileMenuOpen = false;
 
   constructor(
-    private el: ElementRef,
-    public darkModeService: DarkModeService,
     private router: Router,
     private translateService: TranslateService,
     private languageService: LanguageService
@@ -54,20 +37,11 @@ export class HeaderComponent {
     this.currentLang = this.translateService.currentLang;
   }
 
-  get isDarkMode() {
-    return this.darkModeService.isDarkMode();
-  }
-
   getResumeUrl(): string {
     return this.translateService.currentLang === 'en'
       ? 'assets/files/Cristian_Lopez_Resume.pdf'
       : 'assets/files/Cristian_Lopez_CV.pdf';
   }
-
-  faLaptopCode = faCode; // Icon for software
-  faCode = faLaptopCode; // Icon for frontend
-  faAngular = faAngular; // Icon for Angular
-  faFileDownload = faFileDownload;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -92,5 +66,24 @@ export class HeaderComponent {
   toggleLanguage() {
     this.currentLang = this.currentLang === 'en' ? 'es' : 'en';
     this.languageService.setLanguage(this.currentLang);
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const menu = document.querySelector('.mobile-menu');
+    const hamburger = document.querySelector('.hamburger-button');
+
+    // Check if click is outside both menu and hamburger button
+    if (this.isMobileMenuOpen && 
+        menu && 
+        hamburger && 
+        !menu.contains(event.target as Node) && 
+        !hamburger.contains(event.target as Node)) {
+      this.isMobileMenuOpen = false;
+    }
   }
 }

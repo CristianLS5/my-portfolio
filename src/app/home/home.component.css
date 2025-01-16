@@ -7,10 +7,27 @@
 .photo__container {
   perspective: 1000px;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  /* Adjust red glow effect */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    right: -100px;
+    bottom: -30px;
+    background: radial-gradient(
+      circle at 60% center,
+      rgba(220, 38, 38, 0.4),
+      rgba(0, 0, 0, 0) 80%
+    );
+    z-index: -1;
+    filter: blur(60px);
+    transform: scale(1.3);
+  }
 }
 
 .photo__image {
@@ -25,108 +42,13 @@
   transform: scale(1.05) rotateY(12deg);
 }
 
-.photo__led-border {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
-  z-index: 1;
-  border: 4px solid transparent;
-  border-radius: 0.7rem;
-  animation: led-color-change 10s linear infinite;
-  filter: blur(5px);
-}
-
-.photo__led-border::after {
-  content: "";
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  bottom: 5px;
-  left: 5px;
-  background: inherit;
-  filter: blur(5px);
-}
-
 .photo__container:hover .photo__led-border {
   animation-duration: 5s;
-}
-
-@keyframes led-color-change {
-  0%,
-  20% {
-    background-color: #ef4444; /* Red */
-  }
-  20%,
-  40% {
-    background-color: #f97316; /* Orange */
-  }
-  40%,
-  60% {
-    background-color: #eab308; /* Yellow */
-  }
-  60%,
-  80% {
-    background-color: #22c55e; /* Green */
-  }
-  80%,
-  100% {
-    background-color: #3b82f6; /* Blue */
-  }
 }
 
 .home {
   position: relative;
   overflow: hidden;
-}
-
-.home__led-border {
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
-  z-index: 1;
-  border: 4px solid transparent;
-  border-radius: 0.7rem;
-  animation: led-color-change 10s linear infinite;
-  pointer-events: none;
-}
-
-.home__led-border::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  right: -4px;
-  bottom: -4px;
-  left: -4px;
-  border: inherit;
-  border-radius: inherit;
-  filter: blur(5px);
-}
-
-@keyframes led-color-change {
-  0%,
-  20% {
-    border-color: #ef4444; /* Red */
-  }
-  20%,
-  40% {
-    border-color: #f97316; /* Orange */
-  }
-  40%,
-  60% {
-    border-color: #eab308; /* Yellow */
-  }
-  60%,
-  80% {
-    border-color: #22c55e; /* Green */
-  }
-  80%,
-  100% {
-    border-color: #3b82f6; /* Blue */
-  }
 }
 
 .home-content {
@@ -177,67 +99,4 @@
   position: relative;
   z-index: 2;
   padding: 24px; /* Add padding to create space inside the LED border */
-}
-
-.glow-button {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  overflow: visible;
-  transition: all 0.3s ease;
-}
-
-.glow-button::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: transparent;
-  border-radius: inherit;
-  transition: box-shadow 0.3s ease-in-out;
-  z-index: -1;
-}
-
-/* Light mode - View Work button */
-.glow-button:first-child:hover::before {
-  box-shadow: 0 0 5px #3b82f6, 0 0 10px #3b82f6, 0 0 15px #3b82f6;
-}
-
-/* Light mode - Contact button */
-.glow-button:nth-child(2):hover::before {
-  box-shadow: 0 0 5px #9ca3af, 0 0 10px #9ca3af, 0 0 15px #9ca3af;
-}
-
-/* Dark mode - View Work button */
-:host-context(.dark) .glow-button:first-child:hover::before {
-  box-shadow: 0 0 5px #60a5fa, 0 0 10px #60a5fa, 0 0 15px #60a5fa;
-}
-
-/* Dark mode - Contact button */
-:host-context(.dark) .glow-button:nth-child(2):hover::before {
-  box-shadow: 0 0 5px #d1d5db, 0 0 10px #d1d5db, 0 0 15px #d1d5db;
-}
-
-.glow-button .arrow {
-  transition: transform 0.3s ease-in-out;
-}
-
-.glow-button:hover .arrow {
-  transform: translateX(4px);
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-.glow-button:hover .arrow {
-  animation: pulse 1.5s infinite;
 }

@@ -1,27 +1,15 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IntroComponent } from '../intro/intro.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { ProjectsComponent } from '../projects/projects.component';
-import { ArticlesComponent } from '../articles/articles.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faLinkedin,
-  faGithub,
-  faAngular,
-} from '@fortawesome/free-brands-svg-icons';
 import { TypewriterComponent } from '../typewriter/typewriter.component';
 import { NgOptimizedImage } from '@angular/common';
-import { DarkModeService } from '../services/dark-mode.service';
-import { Subscription } from 'rxjs';
-import { ContactComponent } from '../contact/contact.component';
 import { AboutComponent } from '../about/about.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import {
-  faCode,
-  faFileDownload,
-  faLaptopCode,
-} from '@fortawesome/free-solid-svg-icons';
+import { ResumeComponent } from '../resume/resume.component';
+import { ContactComponent } from '../contact/contact.component';
+import { FadeInDirective } from '../shared/directives/fade-in.directive';
 
 @Component({
   selector: 'app-home',
@@ -29,45 +17,23 @@ import {
   imports: [
     CommonModule,
     TypewriterComponent,
-    IntroComponent,
     SkillsComponent,
     ProjectsComponent,
-    ArticlesComponent,
+    ResumeComponent,
     FontAwesomeModule,
     NgOptimizedImage,
     ContactComponent,
     AboutComponent,
     TranslateModule,
+    FadeInDirective,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit, OnDestroy {
-  faLinkedin = faLinkedin;
-  faGithub = faGithub;
-  faFileDownload = faFileDownload;
+export class HomeComponent implements OnInit {
+  constructor(private translate: TranslateService) {}
 
-  isDarkMode = false;
-  private darkModeSubscription: Subscription | undefined;
-
-  constructor(
-    private darkModeService: DarkModeService,
-    private translate: TranslateService
-  ) {}
-
-  ngOnInit() {
-    this.isDarkMode = this.darkModeService.isDarkMode();
-
-    this.darkModeSubscription = this.darkModeService.darkMode$.subscribe(
-      (isDark) => {
-        this.isDarkMode = isDark;
-      }
-    );
-  }
-
-  ngOnDestroy() {
-    this.darkModeSubscription?.unsubscribe();
-  }
+  ngOnInit() {}
 
   getResumeUrl(): string {
     return this.translate.currentLang === 'en'
@@ -83,6 +49,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   technologies = [
     {
+      text: 'Cristian López',
+      shortText: 'Cristian López',
+    },
+    {
       text: 'a Software Developer',
       shortText: 'a Software Dev',
     },
@@ -93,10 +63,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       text: 'an Angular Enthusiast',
       shortText: 'an Angular Dev',
-    },
-    {
-      text: 'Ironman',
-      shortText: 'Ironman',
     },
   ];
 }

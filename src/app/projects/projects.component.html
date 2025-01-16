@@ -1,26 +1,42 @@
-<div class="max-w-4xl mx-auto px-4 py-8">
-    <h2 class="text-4xl font-bold mb-8 text-left">{{ 'PROJECTS.TITLE' | translate }}</h2>
+<div id="work" class="w-full px-4 py-8">
+    <div class="work-title">
+        <h2 class="text-4xl font-bold text-center font-mono">{{ 'PROJECTS.TITLE' | translate }}</h2>
+    </div>
     @if (isLoading()) {
     <p>Loading projects...</p>
     } @else {
-    <div class="projects grid grid-cols-1 md:grid-cols-2 gap-8">
-        @for (project of projects(); track project.id) {
-        <a [href]="project.url" target="_blank" rel="noopener noreferrer" class="projects__item group">
-            <div class="project" [style.backgroundImage]="'url(' + project.backgroundImage + ')'"
-                [attr.data-first-tag]="project.tags[0]">
-                <div class="project__content">
-                    <h3 class="project__title text-xl font-bold mb-2">{{ project.title | translate }}</h3>
-                    <p class="project__description text-sm mb-2">{{ project.description | translate }}</p>
-                    <div class="project__tags flex flex-wrap">
-                        @for (tag of project.tags; track tag) {
-                        <span class="project__tag text-xs px-2 py-1 rounded mr-2 mb-2 font-semibold"
-                            [attr.data-tag]="tag">{{ tag }}</span>
-                        }
-                    </div>
+    <div class="flex flex-col items-center">
+        <div class="carousel-container">
+            <div class="carousel">
+                @for (project of projects(); track project.id) {
+                <div class="carousel-item" 
+                     [class.active]="currentIndex === project.id - 1"
+                     [class.prev]="isPrev(project.id - 1)"
+                     [class.prev-2]="isPrev2(project.id - 1)"
+                     [class.next]="isNext(project.id - 1)"
+                     [class.next-2]="isNext2(project.id - 1)">
+                    <a [href]="project.url" target="_blank" rel="noopener noreferrer">
+                        <div class="project" [style.backgroundImage]="'url(' + project.backgroundImage + ')'">
+                            <div class="project__overlay"></div>
+                            <div class="project__content">
+                                <h3 class="project__title">{{ project.title | translate }}</h3>
+                                <p class="project__description">{{ project.description | translate }}</p>
+                                <div class="project__tags">
+                                    @for (tag of project.tags; track tag) {
+                                    <span class="project__tag">{{ tag }}</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </a>
                 </div>
+                }
             </div>
-        </a>
-        }
+        </div>
+        <div class="mt-2 flex justify-center gap-8">
+            <button (click)="prevSlide()" class="social-icon"><img src="assets/icons/arrow-left.svg" alt="Previous" class="w-5 h-5 ml-1" /></button>
+            <button (click)="nextSlide()" class="social-icon"><img src="assets/icons/arrow-right.svg" alt="Next" class="w-5 h-5 ml-1" /></button>
+        </div>
     </div>
     }
 </div>

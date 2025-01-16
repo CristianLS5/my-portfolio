@@ -12,18 +12,12 @@
     "RIGHTS": "All rights reserved",
     "DOWNLOAD_RESUME": "Download Resume"
   },
-  "INTRO": {
-    "TITLE": "Hello, I'm Cristian López Solá",
-    "DESCRIPTION": "Software Developer | Frontend Specialist | Angular Enthusiast"
-  },
   "HOME": {
-    "GREETING": "Hello, I'm Cristian",
-    "WELCOME": "Welcome to my portfolio",
+    "GREETING": "Hello, I'm",
     "DESCRIPTION": "I'm a passionate front-end developer specialized in Angular, crafting clean and efficient user interfaces.\nWhen I'm not immersed in code, you'll find me exploring Japanese culture 🇯🇵, diving into captivating video game worlds 🎮, or following the latest Marvel adventures 🦸‍♂️.",
     "BUTTON": {
       "WORK": "View Work",
-      "CONTACT": "Contact",
-      "DOWNLOAD_RESUME": "Download Resume"
+      "CONTACT": "CONTACT ME"
     }
   },
   "ABOUT": {
@@ -31,7 +25,7 @@
     "DESCRIPTION": "Experienced working with teams to produce impactful, leading-edge websites that engage customers and deliver business results. Well-versed in design standards and user preferences. Possesses knowledge of Angular with ability to quickly learn new technologies. Demonstrated success in identifying and resolving code issues."
   },
   "PROJECTS": {
-    "TITLE": "Projects",
+    "TITLE": "Work",
     "PROJECT1": {
       "TITLE": "My Portfolio",
       "DESCRIPTION": "Personal website showcasing my projects and skills"
@@ -49,17 +43,12 @@
       "DESCRIPTION": "An interactive scratch card game with winter theme"
     }
   },
-  "NEWS": {
-    "TITLE_ARTICLES": "Angular News",
-    "TITLE_NEWS": "Latest Angular Releases",
-    "BUTTON": {
-      "MORE": "See more"
-    },
-    "GITHUB": "View on GitHub"
-  },
 
   "CONTACT": {
-    "TITLE": "Contact",
+    "TITLE": "Let's connect",
+    "SAY_HELLO": "Say hello at",
+    "EMAIL": "frontenddevcristian@gmail.com",
+    "CHECK_RESUME": "Check out my full experience in my",
     "BUTTON": {
       "SEND": "Send Message"
     },
@@ -82,6 +71,7 @@
   },
 
   "RESUME": {
-    "TITLE": "My Experience"
+    "TITLE": "My Experience",
+    "VIEW_MORE": "VIEW MORE"
   }
 }

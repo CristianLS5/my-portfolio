@@ -8,8 +8,8 @@ import {
   faHeading,
   faMessage,
 } from '@fortawesome/free-solid-svg-icons';
-import { TranslateModule } from '@ngx-translate/core';
-import { EmailService } from '../services/email.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { EmailService } from '../shared/services/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -36,7 +36,9 @@ export class ContactComponent {
   submitSuccess = false;
   submitError = false;
 
-  constructor(private fb: FormBuilder, private emailService: EmailService) {
+  constructor(private fb: FormBuilder, 
+              private emailService: EmailService,
+              private translate: TranslateService) {
     this.contactForm = this.fb.nonNullable.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
@@ -67,5 +69,17 @@ export class ContactComponent {
         },
       });
     }
+  }
+
+  getResumeUrl(): string {
+    return this.translate.currentLang === 'en'
+      ? 'assets/files/Cristian_Lopez_Resume.pdf'
+      : 'assets/files/Cristian_Lopez_CV.pdf';
+  }
+
+  getLinkedInUrl(): string {
+    return this.translate.currentLang === 'es'
+      ? 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/'
+      : 'https://www.linkedin.com/in/cristian-l%C3%B3pez-sol%C3%A1-2b6493204/?locale=en_US';
   }
 }

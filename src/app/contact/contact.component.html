@@ -1,61 +1,95 @@
-<div class="max-w-4xl mx-auto px-4 py-8">
-    <h2 class="text-4xl font-bold mb-8 text-left text-gray-900 dark:text-white">{{ 'CONTACT.TITLE' | translate }}</h2>
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
-        <div class="relative">
-            <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
-                <fa-icon [icon]="faUser"></fa-icon>
+<div class="max-w-5xl mx-auto px-4 py-8">
+
+    <div class="flex flex-col md:flex-row gap-12">
+        <!-- Left side: Text and social icons -->
+        <div class="md:w-1/2 flex flex-col">
+            <h2 class="text-4xl font-bold mb-12 text-left font-mono">{{ 'CONTACT.TITLE' | translate }}</h2>
+            <p class="mb-4">{{ 'CONTACT.SAY_HELLO' | translate }}
+                <a href="mailto:cristianlopez@gmail.com" class="text-red-600 hover:text-red-700 transition-colors">
+                    {{ 'CONTACT.EMAIL' | translate }}
+                </a>
+            </p>
+            <p class="mb-8">{{ 'CONTACT.CHECK_RESUME' | translate }}
+                <a [href]="getResumeUrl()" class="text-red-600 hover:text-red-700 transition-colors">
+                    {{ 'HEADER.RESUME' | translate }}
+                </a>
+            </p>
+
+            <div class="flex gap-4">
+                <a [href]="getLinkedInUrl()" target="_blank" rel="noopener noreferrer"
+                    class="social-icon">
+                    <img src="assets/icons/linkedin.svg" alt="LinkedIn" class="w-7 h-7" />
+                </a>
+                <a href="https://github.com/CristianLS5" target="_blank" rel="noopener noreferrer" 
+                    class="social-icon">
+                    <img src="assets/icons/github.svg" alt="GitHub" class="w-7 h-7" />
+                </a>
             </div>
-            <input type="text" formControlName="name" placeholder="{{ 'CONTACT.PLACEHOLDER.NAME' | translate }}"
-                class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
-            @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
-            <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.NAME' | translate }}e</p>
-            }
         </div>
 
-        <div class="relative">
-            <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
-                <fa-icon [icon]="faEnvelope"></fa-icon>
-            </div>
-            <input type="email" formControlName="email" placeholder="{{ 'CONTACT.PLACEHOLDER.EMAIL' | translate }}"
-                class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
-            @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
-            <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.EMAIL' | translate }}</p>
+        <!-- Right side: Form -->
+        <div class="md:w-1/2">
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6">
+                <div class="relative">
+                    <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
+                        <fa-icon [icon]="faUser"></fa-icon>
+                    </div>
+                    <input type="text" formControlName="name" placeholder="{{ 'CONTACT.PLACEHOLDER.NAME' | translate }}"
+                        class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-red-600 dark:focus:border-red-500 transition-colors bg-zinc-800/50 dark:bg-zinc-800 text-white">
+                    @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                    <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.NAME' | translate }}</p>
+                    }
+                </div>
+
+                <div class="relative">
+                    <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
+                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                    </div>
+                    <input type="email" formControlName="email"
+                        placeholder="{{ 'CONTACT.PLACEHOLDER.EMAIL' | translate }}"
+                        class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-red-600 dark:focus:border-red-500 transition-colors bg-zinc-800/50 dark:bg-zinc-800 text-white">
+                    @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                    <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.EMAIL' | translate }}</p>
+                    }
+                </div>
+
+                <div class="relative">
+                    <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
+                        <fa-icon [icon]="faSubject"></fa-icon>
+                    </div>
+                    <input type="text" formControlName="subject"
+                        placeholder="{{ 'CONTACT.PLACEHOLDER.SUBJECT' | translate }}"
+                        class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-red-600 dark:focus:border-red-500 transition-colors bg-zinc-800/50 dark:bg-zinc-800 text-white">
+                    @if (contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched) {
+                    <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.SUBJECT' | translate }}</p>
+                    }
+                </div>
+
+                <div class="relative">
+                    <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
+                        <fa-icon [icon]="faMessage"></fa-icon>
+                    </div>
+                    <textarea formControlName="message" placeholder="{{ 'CONTACT.PLACEHOLDER.MESSAGE' | translate }}"
+                        rows="4"
+                        class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-red-600 dark:focus:border-red-500 transition-colors bg-zinc-800/50 dark:bg-zinc-800 text-white"></textarea>
+                    @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                    <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.MESSAGE' | translate }}</p>
+                    }
+                </div>
+
+                <button type="submit" [disabled]="contactForm.invalid || submitting" 
+                    class="glow-button w-full flex justify-center items-center">
+                    {{ submitting ? ('CONTACT.SENDING' | translate) : ('CONTACT.BUTTON.SEND' | translate) }}
+                </button>
+            </form>
+
+            @if (submitSuccess) {
+            <p class="mt-4 text-green-600 dark:text-green-400">{{ 'CONTACT.VALIDATION.SUCCESS' | translate }}</p>
+            }
+
+            @if (submitError) {
+            <p class="mt-4 text-red-600 dark:text-red-400">{{ 'CONTACT.VALIDATION.ERROR' | translate }}</p>
             }
         </div>
-
-        <div class="relative">
-            <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
-                <fa-icon [icon]="faSubject"></fa-icon>
-            </div>
-            <input type="text" formControlName="subject" placeholder="{{ 'CONTACT.PLACEHOLDER.SUBJECT' | translate }}"
-                class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white">
-            @if (contactForm.get('subject')?.invalid && contactForm.get('subject')?.touched) {
-            <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.SUBJECT' | translate }}</p>
-            }
-        </div>
-
-        <div class="relative">
-            <div class="absolute left-3 top-3 text-gray-500 dark:text-gray-400 z-10">
-                <fa-icon [icon]="faMessage"></fa-icon>
-            </div>
-            <textarea formControlName="message" placeholder="{{ 'CONTACT.PLACEHOLDER.MESSAGE' | translate }}" rows="4"
-                class="w-full pl-10 pr-3 py-2 rounded-lg border-2 border-gray-300 dark:border-gray-600 outline-none focus:border-blue-500 dark:focus:border-blue-400 transition-colors bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"></textarea>
-            @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
-            <p class="text-red-500 dark:text-red-400 text-sm mt-1">{{ 'CONTACT.ERROR.MESSAGE' | translate }}</p>
-            }
-        </div>
-
-        <button type="submit" [disabled]="contactForm.invalid || submitting"
-            class="glow-button w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex justify-center items-center">
-            {{ submitting ? 'Sending...' : 'Send Message' }}
-        </button>
-    </form>
-
-    @if (submitSuccess) {
-    <p class="mt-4 text-green-600 dark:text-green-400">{{ 'CONTACT.VALIDATION.SUCCESS' | translate }}</p>
-    }
-
-    @if (submitError) {
-    <p class="mt-4 text-red-600 dark:text-red-400">{{ 'CONTACT.VALIDATION.ERROR' | translate }}</p>
-    }
+    </div>
 </div>

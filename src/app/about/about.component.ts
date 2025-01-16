@@ -1,122 +1,95 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faAngular,
-  faCss3Alt,
-  faHtml5,
-  faNodeJs,
-  faGithub,
-  faDocker,
-} from '@fortawesome/free-brands-svg-icons';
-import { DarkModeService } from '../services/dark-mode.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 interface TechLogo {
   name: string;
-  icon: any;
+  icon: string;
   size: string;
   animationDuration: string;
   color: string;
-  darkModeColor?: string; // Add this line
-  isSvg?: boolean;
   startPosition: string;
 }
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, TranslateModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent {
-  private darkModeService = inject(DarkModeService);
-  isDarkMode$ = this.darkModeService.darkMode$;
-
   centralLogo = {
     name: 'Angular',
-    icon: faAngular,
+    icon: 'angular.svg',
     color: '#DD0031',
-    size: '50px', // Increased size for the central Angular logo
+    size: '50px',
   };
 
   techLogos = signal<TechLogo[]>([
     {
-      name: 'TypeScript',
-      icon: 'typescript.svg',
+      name: 'npm',
+      icon: 'npm.svg',
       size: '28px',
       animationDuration: '8s',
-      color: '#3178C6',
-      isSvg: true,
+      color: '#CB3837',
       startPosition: '0deg',
     },
     {
-      name: 'RxJS',
-      icon: 'rxjs.svg',
-      size: '24px',
+      name: 'TypeScript',
+      icon: 'typescript.svg',
+      size: '32px',
       animationDuration: '12s',
-      color: '#B7178C',
-      isSvg: true,
+      color: '#3178C6',
       startPosition: '45deg',
     },
     {
       name: 'HTML5',
-      icon: faHtml5,
-      size: '32px',
+      icon: 'html5.svg',
+      size: '34px',
       animationDuration: '16s',
       color: '#E34F26',
       startPosition: '90deg',
     },
     {
       name: 'CSS3',
-      icon: faCss3Alt,
-      size: '30px',
+      icon: 'css3.svg',
+      size: '34px',
       animationDuration: '20s',
       color: '#1572B6',
       startPosition: '135deg',
     },
     {
-      name: 'JavaScript',
-      icon: 'javascript.svg',
-      size: '34px',
+      name: 'Node.js',
+      icon: 'nodejs.svg',
+      size: '36px',
       animationDuration: '24s',
-      color: '#F7DF1E',
-      isSvg: true,
+      color: '#339933',
       startPosition: '180deg',
     },
     {
-      name: 'Node.js',
-      icon: faNodeJs,
+      name: 'MongoDB',
+      icon: 'mongodb.svg',
       size: '36px',
       animationDuration: '28s',
-      color: '#339933',
+      color: '#47A248',
       startPosition: '225deg',
     },
     {
-      name: 'GitHub',
-      icon: faGithub,
-      size: '26px',
+      name: 'Docker',
+      icon: 'docker.svg',
+      size: '38px',
       animationDuration: '32s',
-      color: '#181717',
-      darkModeColor: '#ffffff',
+      color: '#2496ED',
       startPosition: '270deg',
     },
     {
-      name: 'Docker',
-      icon: faDocker,
+      name: 'GitHub',
+      icon: 'github-skill.svg',
       size: '38px',
       animationDuration: '36s',
-      color: '#2496ED',
+      color: '#ffffff',
       startPosition: '315deg',
     },
   ]);
-
-  getGitHubColor(isDarkMode: boolean) {
-    return isDarkMode ? '#ffffff' : '#181717';
-  }
-
-  getLogoColor(logo: TechLogo, isDarkMode: boolean | null): string {
-    return isDarkMode && logo.darkModeColor ? logo.darkModeColor : logo.color;
-  }
 }
