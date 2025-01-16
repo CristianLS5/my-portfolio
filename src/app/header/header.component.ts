@@ -1,25 +1,14 @@
 import { CommonModule } from '@angular/common';
 import {
   Component,
-  Output,
-  EventEmitter,
   signal,
   HostListener,
-  ElementRef,
 } from '@angular/core';
 import {
   Router,
-  RouterLink,
-  RouterLinkActive,
   RouterModule,
 } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-  faLaptopCode,
-  faCode,
-  faFileDownload,
-} from '@fortawesome/free-solid-svg-icons';
-import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LanguageService } from '../services/language.service';
 
@@ -36,13 +25,11 @@ import { LanguageService } from '../services/language.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  @Output() toggleDarkMode = new EventEmitter<void>();
   showHeaderContent = signal(false);
   currentLang: string;
   isMobileMenuOpen = false;
 
   constructor(
-    private el: ElementRef,
     private router: Router,
     private translateService: TranslateService,
     private languageService: LanguageService
@@ -55,11 +42,6 @@ export class HeaderComponent {
       ? 'assets/files/Cristian_Lopez_Resume.pdf'
       : 'assets/files/Cristian_Lopez_CV.pdf';
   }
-
-  faLaptopCode = faCode; // Icon for software
-  faCode = faLaptopCode; // Icon for frontend
-  faAngular = faAngular; // Icon for Angular
-  faFileDownload = faFileDownload;
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
